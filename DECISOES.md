@@ -187,6 +187,10 @@ ort = "0.47"  # ONNX Runtime bindings
 |---|---|---|
 | 1 | Linguagem runtime | **Rust puro** — zero Python, zero FFI, zero LangChain |
 | 2 | Kernel persistente | **Tokio** (não asupersync, não próprio) |
+| 3 | Auto-melhoria N3 | Laya ONNX + Critic/Pruner/Proposer (RRSI) |
+| 4 | Sandbox | Linux namespaces + cgroups (não Docker) |
+
+**Ver também:** `RESEARCH-PATTERNS.md` (papers × pilares) e `PLANO_IMPLEMENTACAO.md` (decisões concretas)
 | 3 | RLM | Nativo (depth-bounded) |
 | 4 | Auto-melhoria | Nível 3 |
 | 5 | Decision layer | Laya (ONNX local) |

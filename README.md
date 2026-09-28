@@ -46,4 +46,9 @@
 
 **Decisões fechadas:** Rust puro (sem Python/FFI/LangChain), Tokio (não asupersync), Laya ONNX embedded
 
+**Novos documentos (2026-09-28):**
+- `RESEARCH-PATTERNS.md` — 13 papers mapeados aos 4 pilares com detalhes
+- `PLANO_IMPLEMENTACAO.md` — Mapa completo: papers → decisões de código → módulos Rust → ADRs → roadmap revisado
+- `ESTADO_DA_ARTE.md` (atualizado) — Seção 7: Auto-Research Setup com 55 papers descobertos via `orx`
+
 *Última atualização: 2026-09-27*
