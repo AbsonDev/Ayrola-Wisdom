@@ -52,3 +52,11 @@
 - `ESTADO_DA_ARTE.md` (atualizado) — Seção 7: Auto-Research Setup com 55 papers descobertos via `orx`
 
 *Última atualização: 2026-09-27*
+
+
+## 🔗 Repositórios
+
+| Repo | URL | Status |
+|---|---|---|
+| **Ayrola-Wisdom** (pesquisa, manifesto, ADRs) | https://github.com/AbsonDev/Ayrola-Wisdom | ✅ Ativo |
+| **ayrola-kernel** (fork pi_agent_rust, Rust kernel) | https://github.com/AbsonDev/ayrola-kernel | ✅ Fase 0+ |
