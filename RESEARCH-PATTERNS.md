@@ -1,5 +1,11 @@
 # RESEARCH-PATTERNS.md
 
+> **Foundational concept:** `2609.language-model-shape` (Alex Zhang) — "Design language models around harnesses, not the other way around." Laya is an instance of this shape. Read this FIRST.
+
+---
+
+
+
 Mapeamento cruzado: papers × pilares Ayrola × implementação no kernel.
 
 Gerado: 2026-09-28 | Fonte: orx discover embedding + alphaXiv | 55 papers únicos

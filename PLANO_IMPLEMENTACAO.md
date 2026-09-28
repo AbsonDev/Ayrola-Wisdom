@@ -187,6 +187,23 @@ ayrola-kernel/src/
 
 ---
 
+## Conceito foundational: Language Model Shape
+
+**Paper:** `2609.language-model-shape` (Alex Zhang, 2026)
+
+> "Design language models around harnesses, not the other way around."
+
+- Laya é uma instância desse "shape" — output constrainido, prefill-only, rápido
+- Abre espaço para modelos especializados: tool-calling, memory indexing, routing
+- RLCD (Reinforcement Learning for Calibrated Decisions) — objective function para modelos de decisão
+- Conecta com RAH: harness recursion + model shape = sistema coeso
+
+**Decisão:** O Ayrola adota a filosofia de "model shape per function":
+- Laya = decision shape
+- Futuro: tool-selector shape, memory-embedding shape, router shape
+
+---
+
 ## ADRs a escrever (a partir dos papers)
 
 | ADR | Decisão | Paper fonte |
