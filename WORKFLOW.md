@@ -39,7 +39,7 @@ Cada semana = **subagente dedicado** que:
 
 ---
 
-## Semana 1: Kernel do zero (event store + decision trait + agent)
+## Semana 1: Kernel do zero — ✅ CONCLUÍDA (event store + decision trait + agent)
 
 **Diretório:** `~/ayrola-kernel-new`  
 **Branch:** `main` (semana 1)  
@@ -154,7 +154,7 @@ feat: S4 — ensemble 3 tiers (cache → prefilter → LLM)
 
 ---
 
-## Semana 5: Refine loop (critic + pruner)
+## Semana 5: Refine loop (critic + pruner) — ⏳ PENDENTE
 
 **Branch:** `refine-loop`  
 **Deadline:** 3 dias  
@@ -176,7 +176,7 @@ feat: S5 — refine loop (critic + pruner + proposer)
 
 ---
 
-## Semana 6: Shadow executor + golden set
+## Semana 6: Shadow executor + golden set — ⏳ PENDENTE
 
 **Branch:** `shadow-executor`  
 **Deadline:** 4 dias  
