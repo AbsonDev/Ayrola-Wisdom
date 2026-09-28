@@ -73,11 +73,18 @@ Continua ou refina
 ---
 
 <a id="decisao-barata"></a>
-## 4. Camada de Decisão Barata (Jev / System One)
+## 4. Camada de Decisão Barata (Laya — open-source, 4x mais rápido que Laya)
 
 **O achado:** Decisões simples (yes/no, roteamento, scoring) custam 100-200x mais em LLM do que deveriam.
 
-**A solução:** Modelos de decisão especializados (Jev, System One) — ~400ms, ~$0/call.
+**A solução:** **Laya** — modelo de decisão open-source (Apache 2.0), 421M params, ~33ms por decisão, roda local via ONNX Runtime, $0 absoluto.
+
+**Por que Laya e não Laya:**
+- **4x mais rápido** (33ms vs 136ms)
+- **Open weights** — você possui o modelo, pode auditar e fine-tunar
+- **Rust-native** — integra via `ort` crate (ONNX Runtime), sem HTTP
+- **Bate Laya 26-1 no Tetris** — prova de performance
+- **Zero dependência externa** — não precisa de API ou serviço
 
 **Casos de uso:**
 - Roteamento de requisições
@@ -86,12 +93,14 @@ Continua ou refina
 - Commit messages
 - Code review básico
 - Gating de comandos perigosos
+- Decisões de subagent spawning (RLM)
+- Validação de patches de auto-melhoria (nível 3)
 
-**Quem usa:** Prime Agent (Jev nativo), OpenCode (Zen lane zero-cost)
+**Quem usa:** Prime Agent (Laya), OpenCode (Zen lane). **Ayrola será o primeiro harness Rust-native com Laya embutido.**
 
-**Referência:** TypeSafe AI — $40M seed (DCVC), adotado por Vercel e Cloudflare (Forbes, Set 2026)
+**Referência:** Laya (ConvAI Innovations) — open-source, Apache 2.0, paper Mar 2025. Fine-tuning via RLCD.
 
-**Implicação para Ayrola:** Se seu agente roda 100 decisões por sessão, 95 delas podem ser $0.
+**Implicação para Ayrola:** Se seu agente roda 100 decisões por sessão, 95 delas podem ser $0 E < 50ms cada. Com fine-tuning, as decisões ficam calibradas para o domínio Ayrola.
 
 ---
 
@@ -175,7 +184,7 @@ Continua ou refina
 Dominante:        Modelo-centric     ──────────►  Harness-centric
 Paradigma:        Agent + tools      ──────────►  RLM + Continual Harness
 Runtime:          Python             ──────────►  Rust/Go/TS (kernel)
-Decisões:         LLM para tudo      ──────────►  Jev/System One para 90%
+Decisões:         LLM para tudo      ──────────►  Laya/System One para 90%
 Estrutura:        Monolithic         ──────────►  Multi-agent default
 Auto-melhoria:    Prompt tweak       ──────────►  Harness restructure
 Sandbox:          Premium feature    ──────────►  Commodity
@@ -189,7 +198,7 @@ Se tivesse que apostar em 5, seriam estas:
 
 1. **RLM** — vai ser o padrão de 2026
 2. **Kernel REPL persistente** — diferencial barato, alto impacto
-3. **Decisão barata (Jev)** — ROI obvious, todo agente precisa
+3. **Decisão barata (Laya)** — ROI obvious, todo agente precisa
 4. **Multi-agent** — inevitável, sem isso fica para trás
 5. **Auto-melhoria nível 2** (`/refine`) — diferencia de forma mensurável
 

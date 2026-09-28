@@ -19,7 +19,7 @@ Harness open-source para coding e pesquisa, construído em torno de duas abstra�
 - **Subagentes recursivos nativos** — `rlm.spawn()` é primitiva da API
 - **Auto-refinamento do harness** — `/refine` atualiza skills/memórias/rotas
 - **Multi-modelo com fallback** — OpenRouter, Anthropic, 9Router local
-- **Jev decision layer** — decisões baratas ($0) antes do LLM caro
+- **Laya decision layer** — decisões baratas ($0) antes do LLM caro
 
 ### Limitações
 - Runtime Python (GIL, startup lento)
@@ -90,7 +90,7 @@ Harness open-source da DeepSeek AI, focado no princípio **"Everything is a Plug
 Terminal-first coding agent open-source, resposta da comunidade ao Claude Code.
 
 ### Inovações
-- **Zen lane** — zero custo via systemone/jev-1.13-free
+- **Zen lane** — zero custo via laya-native (ONNX local)
 - **Hot reload de skills** — sem reiniciar sessão
 - **Sessão shell persistente** — estado entre prompts
 - **MCP nativo** — Model Context Protocol como padrão

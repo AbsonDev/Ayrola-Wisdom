@@ -34,7 +34,7 @@ Guia de navegação rápida. Cada link aponta para o arquivo de detalhe.
 | RLM como paradigma padrão | 03-trends/01-tendencias-2026.md#rlm |
 | Harness como camada de inteligência | 03-trends/01-tendencias-2026.md#harness-inteligente |
 | Kernel REPL persistente | 03-trends/01-tendencias-2026.md#kernel-repl |
-| Decisão barata (Jev/System One) | 03-trends/01-tendencias-2026.md#decisao-barata |
+| Decisão barata (Laya/System One) | 03-trends/01-tendencias-2026.md#decisao-barata |
 | Sandbox real como default | 03-trends/01-tendencias-2026.md#sandbox |
 | Runtime diversificação | 03-trends/01-tendencias-2026.md#runtime |
 | Auto-melhoria estrutural | 03-trends/01-tendencias-2026.md#auto-melhoria |
@@ -53,7 +53,7 @@ Guia de navegação rápida. Cada link aponta para o arquivo de detalhe.
 | Subagentes recursivos | ✅ | ✅ | ❌ | ✅ (limitado) | ❌ |
 | Multi-modelo (fallback) | ✅ | ✅ | ❌ | ✅ | ✅ |
 | Sandbox real | ❌ (Docker) | ✅ | ❌ | ✅ | ✅ |
-| Zero custo para decisões | ✅ (Jev) | ✅ (Zen lane) | ❌ | ❌ | ❌ |
+| Zero custo para decisões | ✅ (Laya) | ✅ (Zen lane) | ❌ | ❌ | ❌ |
 | Plugin-first | ❌ | ❌ | ✅ | ❌ | ❌ |
 
 📄 `04-comparative/FEATURE_COMPARISON.md`
@@ -69,4 +69,4 @@ Comece aqui para decidir a arquitetura:
 3. **04-comparative/FUNCIONALIDADES.md** — gap analysis
 4. **06-drafts/00-template-proposta.md** — template para definir sua proposta
 5. **03-trends/03-runtime-language-decision.md** — decisao de linguagem (Python vs Rust vs TS vs Go)
-6. **03-trends/04-laya-vs-jev-decision-layer.md** — Laya como substituto do Jev (open-source, 4x mais rápido)
+6. **03-trends/04-laya-vs-jev-decision-layer.md** — Laya como substituto do Laya (open-source, 4x mais rápido)

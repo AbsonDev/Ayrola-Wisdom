@@ -14,7 +14,7 @@ Comparação direta entre os principais agent harnesses disponíveis.
 | **Subagentes recursivos** | ✅ Sem limite | ✅ Zen lane | ❓ | ✅ Limitado (depth cap) | ❌ |
 | **Multi-modelo fallback** | ✅ 3+ providers | ✅ | ❌ | ✅ | ✅ |
 | **Sandbox real** | ⚠️ Docker | ✅ | ❌ | ✅ srt | ✅ |
-| **Decisão barata ($0)** | ✅ Jev | ✅ Zen lane | ❌ | ❌ | ❌ |
+| **Decisão barata ($0)** | ✅ Laya | ✅ Zen lane | ❌ | ❌ | ❌ |
 | **Plugin-first** | ❌ Built-in | ❌ Built-in | ✅ Radical | ❌ Built-in | ❌ Built-in |
 | **Multi-canal** | ❌ | ❌ | ❌ | ❌ | ❌ |
 | **Auto-healing skills** | ❌ | ❌ | ❌ | ❌ | ❌ |
@@ -29,7 +29,6 @@ Comparação direta entre os principais agent harnesses disponíveis.
 
 ### Prime Agent
 - Melhor auto-refinamento (`/refine`)
-- Jev integrado (decisões $0)
 - Subagentes recursivos sem limite
 - Kernel IPython completo
 
@@ -37,7 +36,7 @@ Comparação direta entre os principais agent harnesses disponíveis.
 - Mais simples de instalar (MIT, TS)
 - Zen lane zero-cost
 - Hot reload de skills
-- Comunidade ativa
+- Usa Laya como decision layer (open-source)
 
 ### DeepSeek Harness
 - Plugin-first (mais extensível)

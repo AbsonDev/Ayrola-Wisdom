@@ -22,7 +22,7 @@ Onde os harnesses existentes são fracos, e como o Ayrola pode preencher.
 
 **Evidência:** Paper Self-Harness (45 citações), mas código `qzzqzzb/Self-Harness` é protótipo.
 
-**Oportunidade:** Levar nível 3 para produção com validação rigorosa (Jev gates, hold-out tests).
+**Oportunidade:** Levar nível 3 para produção com validação rigorosa (Laya gates, hold-out tests).
 
 **Dificuldade:** Média — requer pipeline de validação sólido.
 
@@ -64,9 +64,9 @@ Onde os harnesses existentes são fracos, e como o Ayrola pode preencher.
 
 ---
 
-## Gap 6: Jev-style decisions sem dependência externa
+## Gap 6: Laya-style decisions sem dependência externa
 
-**Problema:** Jev depende de TypeSafe/9Router. Zen lane depende de OpenCode.
+**Problema:** Laya depende de TypeSafe/9Router. Zen lane depende de OpenCode.
 
 **Evidência:** TypeSafe AI $40M seed, mas dependência de serviço.
 
@@ -97,7 +97,7 @@ Onde os harnesses existentes são fracos, e como o Ayrola pode preencher.
 | Plugin-first + DX | Grande | Baixo | 1 |
 | Multi-canal + coding | Grande | Médio | 1 |
 | Sandbox + auto-healing | Médio | Baixo | 2 |
-| Jev offline | Grande | Médio | 2 |
+| Laya offline | Grande | Médio | 2 |
 | RLM acessível | Grande | Baixo | 1 |
 
 **Prioridade 1 = faça primeiro, prioridade 2 = depois, prioridade 3 = roadmap longo.**

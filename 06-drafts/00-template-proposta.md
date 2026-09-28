@@ -30,7 +30,7 @@
 | Kernel persistente | ☐ IPython ☐ Shell ☐ conkernel ☐ Próprio | |
 | RLM | ☐ Nativo ☐ Manual ☐ Híbrido | |
 | Auto-melhoria | ☐ Nível 1 ☐ Nível 2 ☐ Nível 3 | |
-| Decisão barata | ☐ Jev ☐ System One local ☐ Sem | |
+| **Decisão barata** | ✅ **Laya** (ONNX local, fine-tunable) | |
 | Sandbox | ☐ Docker ☐ E2B ☐ srt ☐ Sem | |
 | Multi-modelo | ☐ Sim ☐ Não | |
 | Plugin system | ☐ MCP ☐ Plugin-first ☐ Built-in | |
@@ -73,7 +73,7 @@ Liste 3-5 features para a primeira versão funcional:
 |---|---|---|
 | Kernel REPL | conkernel / clikernel | MIT |
 | RLM | alexzhang13/rlm | MIT |
-| Decision layer | Jev / System One | API key |
+| Decision layer | Laya / System One | API key |
 | Sandbox | Anthropic srt | MIT |
 | MCP | Model Context Protocol | Open spec |
 

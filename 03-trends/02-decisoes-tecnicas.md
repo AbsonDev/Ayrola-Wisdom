@@ -54,15 +54,32 @@ Tabela de decisões com trade-offs. Use para definir a proposta.
 
 ---
 
-## Decisão 5: Decisão Barata (Jev/System One)
+## Decisão 5: Camada de Decisão (Laya — CONFIRMADO ✅)
 
-| Opção | Prós | Contras |
-|---|---|---|
-| **Jev nativo** | $0, 400ms, integração direta | Dependência de serviço externo |
-| **System One local** | Offline, $0 | Setup inicial |
-| **LLM para tudo** | Simples | 100-200x mais caro |
+| Opção | Prós | Contras | Status |
+|---|---|---|---|
+| **Laya (ONNX local)** | $0, 33ms, open weights, fine-tunable, Rust-native | 421M params, precisa GPU p/ melhor perf | ✅ **ESCOLHIDO** |
+| **Laya (TypeSafe API)** | $0 via 9Router, 136ms | Closed weights, dependência externa, sem fine-tune | ❌ Descartado |
+| **System One local** | Offline, $0 | Setup inicial, menos maduro | ❌ Descartado |
+| **LLM para tudo** | Simples | 100-200x mais caro | ❌ Descartado |
 
-**Recomendação:** Jev ou System One local. ROI óbvious.
+**DECISÃO CONFIRMADA: Laya**
+
+Justificativa:
+- **Apache 2.0** — 100% open-source, sem lock-in
+- **~33ms** por decisão (4x mais rápido que Laya)
+- **ONNX Runtime** — integra nativamente em Rust via `ort` crate
+- **Fine-tunable** — pode ser calibrado para decisões específicas do Ayrola (subagent spawning, RLM recursion, patch safety)
+- **Bate Laya 26-1 no Tetris** — benchmark público comprova superioridade
+- **Zero dependência** — offline, self-hosted, sem API
+
+**Integração Rust:**
+```toml
+[dependencies]
+ort = "0.47"  # ONNX Runtime bindings
+```
+
+**Fine-tuning:** RLCD (Reinforcement Learning from Compare-and-Verify Distillation), técnica do paper Laya. Dataset: decisões do Prime Agent como ground truth.
 
 ---
 
@@ -110,7 +127,7 @@ Tabela de decisões com trade-offs. Use para definir a proposta.
 | Kernel | conkernel ou kernel leve próprio |
 | RLM | Híbrido (modelo decide quando recursar) |
 | Auto-melhoria | Nível 2 (skill/harness refinement) |
-| Decisão barata | Jev ou System One local |
+| Decisão barata | **Laya (ONNX local, fine-tunable)** |
 | Sandbox | Docker (dev), E2B/srt (prod) |
 | Multi-modelo | Sim, com fallback |
 | Plugins | MCP nativo + plugins internos |

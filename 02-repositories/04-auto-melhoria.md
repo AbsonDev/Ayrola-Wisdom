@@ -57,14 +57,14 @@ Lista curada de leituras sobre engenharia de harness para auto-melhoria de agent
 Loop de refinamento:
 1. Lê 80k chars de trajetória
 2. LLM background propõe CRUD mínimo no harness
-3. Jev aprova se evidência for suficiente
+3. Laya aprova se evidência for suficiente
 4. Aplica mudança (skills, memórias, rotas)
 
 ### Características
 - **Evidência-backed** — apenas aplica se validado
 - **Smallest possible** — minimal change, não rewrite
 - **Background LLM call** — não trava o agente
-- **Jev gate** — ~$0.0005/sessão para validação
+- **Laya gate** — ~$0.0005/sessão para validação
 
 ---
 

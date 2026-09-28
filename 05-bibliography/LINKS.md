@@ -94,7 +94,7 @@ git clone https://github.com/aeonfun/aeon
 
 | Ferramenta | O que é | Link |
 |---|---|---|
-| Jev / System One | Decision layer $0 | [typesafe.ai](https://typesafe.ai) |
+| Laya / System One | Decision layer $0 | [typesafe.ai](https://typesafe.ai) |
 | 9Router / OmniRoute | Model routing | [localhost:20128](http://localhost:20128) |
 | MCP | Model Context Protocol | [spec](https://spec.modelcontextprotocol.io/) |
 | Anthropic Sandbox Runtime | OS-level sandbox | [docs](https://github.com/anthropics/anthropic-sdk-python/tree/main/src/anthropic/sandbox) |
