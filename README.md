@@ -31,7 +31,7 @@
 | **RESEARCH-PATTERNS.md** | 13 papers mapeados aos 4 pilares |
 | **PLANO_IMPLEMENTACAO.md** | 8 ADRs derivados de papers (nenhum testado) |
 | **PLANO_MIGRACAO.md** | ⚠️ Histórico — plano do fork, parcialmente revertido |
-| **phase0-kernel/** | Phase 0 histórico (885 linhas, stub, 6 testes) — **substituído pelo kernel novo** |
+| **phase0-kernel/** | Phase 0 histórico (4.777 linhas, stub, 146 testes) — **substituído pelo kernel novo** |
 
 ---
 
@@ -48,7 +48,7 @@
 **Status:** ✅ S1-S4 concluídas — 92 testes, clippy clean, spawn p50 0.010ms
 
 **Kernel repo (novo):** https://github.com/AbsonDev/ayrola-kernel (branch `ayrola-kernel-new`)
-**Commit:** `4508f52` — kernel do zero (~7.5k linhas, 9 módulos, 92 testes)
+**Commit:** `4508f52` — kernel do zero (~7.5k linhas, 15 módulos, 92 testes)
 
 **Decisões fechadas:** Rust puro, Tokio 1.53.1, ensemble 3 tiers, Laya apenas Tier 2.
 **Concluído:** Kernel + RLM + benchmarks + decision ensemble.

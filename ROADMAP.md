@@ -2,7 +2,7 @@
 
 **Versão:** 0.1  
 **Data:** 2026-09-28  
-**Status:** ✅ **Semanas 1 e 2 CONCLUÍDAS** — kernel Ayrola do zero compilando, 92 testes verdes, clippy limpo, spawn p50 0.010ms
+**Status:** ✅ **Semanas 1 e 2 CONCLUÍDAS** — kernel Ayrola do zero compilando, 146 testes verdes, clippy limpo, spawn p50 0.010ms
 
 **Última atualização:** 2026-10-01 (S1+S2 concluídas, gates passados)
 
@@ -14,7 +14,7 @@
 
 | Item | Real |
 |---|---|
-| Código Ayrola | **~7.500 linhas Rust**, 9 módulos, **92 testes** verdes em `~/ayrola-kernel-new` |
+| Código Ayrola | **~4.777 linhas Rust**, 15 módulos, **146 testes** verdes em `~/ayrola-kernel-new` |
 | GitHub | Branch `ayrola-kernel-new` em `AbsonDev/ayrola-kernel` (10+ commits) |
 | Tokio | **100%** — kernel novo usa `tokio 1.53.1` (full), zero asupersync |
 | Laya | **Não integrada** — decisão em ADR-004: ensemble 3 tiers, Laya só no tier 2 |
