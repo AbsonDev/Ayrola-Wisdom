@@ -116,7 +116,21 @@ cargo run -- bench decision-tier
 
 ---
 
-## Semana 4: ADR real + README honesto — ⏳ PENDENTE
+## Semana 4: Ensemble de decisão 3 tiers — ✅ CONCLUÍDA
+
+**Deliverables:**
+- `decision.rs` — Tier0 cache (SHA-256), Tier1 heuristic (word-boundary), Tier2 LLM stub
+- `DecisionEngine::ask()` — cache-first flow com fallback
+- `ContainsSpawn` — detecta subagente spawn em contexto
+- 12 testes unitários
+
+## Semana 5: ADR real + README honesto — ✅ CONCLUÍDA
+
+**Deliverables:**
+- 8 ADRs em `DECISOES.md` (runtime, kernel, RLM, auto-melhoria, decision, sandbox, multi-modelo, plugin)
+- `ROADMAP.md` atualizado com kill criteria e status real
+- `WORKFLOW.md` com 8 semanas e gates
+- README com status atualizado
 
 **Objetivo:** documentar as 4 primeiras decisões de forma durável e honesta.
 
