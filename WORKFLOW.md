@@ -216,7 +216,19 @@ feat: S7 — sandbox via Linux namespaces (Railway VM)
 
 ---
 
-## Semana 8: ADRs + README honesto
+## Semana 7: Cert module (decision certification) — ✅ CONCLUÍDA
+
+**Deliverables:**
+- `cert/mod.rs` — `DecisionId`, `DecisionTier`, `Evidence`, `CertifiedDecision` (SHA-256), `DecisionLog`
+- Cada decisão carrega {decision_id, inputs, decision, evidence, cost, tier, replayable}
+- Replay verificável por hash — tamper detection
+- 9 testes: verify, tamper detection, log ops, tier filter, serialization
+
+**Gate:**
+- `cert.verify()` passa para decisões não adulteradas ✅
+- Tampered decision falha em `verify()` ✅
+
+## Semana 8## Semana 8: ADRs + README honesto
 
 **Branch:** `docs-final`  
 **Deadline:** 2 dias  
