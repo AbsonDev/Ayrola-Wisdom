@@ -13,9 +13,18 @@ Tabela de decisões com trade-offs. Cada linha = uma decisão arquitectonica fec
 | **TypeScript** | Type safety, serverless, Next.js | Node.js GC, menos maduro para agents | ❌ |
 | **Go** | Goroutines simples, GC eficiente | Ecossistema AI menor | 🔄 Longo prazo (plano B) |
 
-**Decisão:** Rust para o kernel. Python via FFI para harness definition (LangChain/LlamaIndex/MCP).
+**Decisão:** **Rust para o kernel, desde o dia 1.** Zero Python no kernel. Python só via FFI na camada de orquestração (Fase 1+).
 
-**Evidência:** GitHub Copilot migrôu 800k+ linhas para Rust (Q2 2026). Benchmark: Rust é 97x mais rápido que Python (CPU), 3-4x em I/O.
+**Por que Rust-first (não Python-first):**
+- Sub-100ms spawning é impossível em Python (GIL + startup 500ms-2s)
+- Event store append-only com memmap só é performante em Rust
+- Sandbox-per-agent via namespaces Linux é natural em Rust (`nix` crate)
+- Laya ONNX integra nativamente via `ort` crate — sem HTTP, sem Python
+- GitHub Copilot provou o caminho: 800k+ linhas Rust (Q2 2026)
+
+**Evidência:** Rust é 97x mais rápido que Python (CPU), 3-4x em I/O. Tokio tasks spawnam em microssegundos.
+
+**Caminho revolucionário confirmado:** Rust kernel + Laya desde o Fase 0. Sem Python no kernel, sem HTTP para decision layer, sem dependência externa.
 
 ---
 

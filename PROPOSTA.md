@@ -7,9 +7,9 @@ Escopo, features, roadmap e métricas de sucesso do Ayrola Harness.
 ## 1. Escopo do MVP
 
 ### Incluído (v1 — 6 meses)
-- Kernel Rust (Tokio + event store)
+- **Kernel Rust puro** (Tokio + event store) — sem Python, sem GIL
+- **Laya ONNX embarcado desde o dia 1** (via `ort` crate) — $0, 33ms, offline
 - RLM engine (depth-bounded, 3 níveis)
-- Decision layer Laya (ONNX local)
 - Memória event-sourced com time-travel
 - Auto-melhoria nível 2 (skill refinement)
 - Terminal-first interface
@@ -30,9 +30,12 @@ Escopo, features, roadmap e métricas de sucesso do Ayrola Harness.
 - `cargo init --name ayrola-kernel`
 - Tokio event loop básico
 - Event store append-only (memmap)
+- **Laya ONNX decision layer integrada desde o dia 1** (via `ort` crate)
 - CLI mínima
 
-**Entregável:** Kernel que aceita input, processa, persiste eventos.
+**Entregável:** Kernel Rust que aceita input, consulta Laya (33ms, $0, offline), persiste eventos.
+
+**Princípio da Fase 0:** Nada de Python. Nada de HTTP para decisões. O kernel é Rust puro com Laya embarcado — a decisão不问 SaaS, pergunta Laya local.
 
 ### Fase 1: RLM Engine (3-5 meses)
 - Decomposição recursiva de tarefas
