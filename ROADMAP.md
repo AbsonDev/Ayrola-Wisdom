@@ -2,7 +2,7 @@
 
 **Versão:** 0.1  
 **Data:** 2026-09-28  
-**Status:** ✅ **SEMANAS 1-8 CONCLUÍDAS + PHASE 1 COMPLETA** — 41 commits, 165 testes (161 lib + 4 e2e) verdes, clippy limpo, todos os módulos reais
+**Status:** ✅ **SEMANAS 1-8 CONCLUÍDAS + PHASE 1 COMPLETA** — 57 commits, 169 testes (161 lib + 4 e2e) verdes, clippy limpo, todos os módulos reais
 
 **Última atualização:** 2026-10-02 (S1-S8 + Phase 1 concluídas, todos os stubs substituídos por implementações reais)
 
@@ -14,8 +14,8 @@
 
 | Item | Real |
 |---|---|
-| Código Ayrola | **5.361 linhas Rust**, 15 módulos, **165 testes (161 lib + 4 e2e)** verdes em `~/ayrola-kernel-new` |
-| GitHub | Branch `ayrola-kernel-new` em `AbsonDev/ayrola-kernel` (41 commits) |
+| Código Ayrola | **5985 linhas Rust**, 15 módulos, **169 testes (161 lib + 4 e2e)** verdes em `~/ayrola-kernel-new` |
+| GitHub | Branch `ayrola-kernel-new` em `AbsonDev/ayrola-kernel` (57 commits) |
 | Tokio | **100%** — kernel novo usa `tokio 1.53.1` (full), zero asupersync |
 | Laya | **Não integrada** — decisão em ADR-004: ensemble 3 tiers, Laya só no tier 2 |
 | Benchmarks | **CLI `bench`** — 10 tasks, scoreboard com speedup vs baseline, avg_latency_us |
@@ -27,7 +27,7 @@
 
 ## Semanas 1-8: Kernel completo — ✅ CONCLUÍDAS
 
-**Entregável:** Kernel Rust completo com 15 módulos, 165 testes (161 lib + 4 e2e), 9 ADRs, CI GitHub Actions, CLI com 4 comandos.
+**Entregável:** Kernel Rust completo com 15 módulos, 169 testes (161 lib + 4 e2e), 9 ADRs, CI GitHub Actions, CLI com 4 comandos.
 
 Todas as semanas do ROADMAP foram executadas e validadas por `cargo test` + `cargo clippy -- -D warnings`.
 
@@ -185,7 +185,7 @@ git commit -m "docs: 4 ADRs + honest README"
 **Gate:**
 - Todos os casos do golden set passam → promove
 - Falha qualquer → rollback automático
-- 165 testes (161 lib + 4 e2e) totais, clippy clean
+- 169 testes (161 lib + 4 e2e) totais, clippy clean
 
 ## Semanas 5+ (dependem de dados reais)
 
@@ -229,17 +229,40 @@ Todos os stubs foram substituídos por implementações funcionais:
 | `tools` | `GrepTool` real, `ToolExecutor` com JoinSet paralelo, `WebFetch` via curl subprocess |
 | `sandbox` | `SandboxExecutor` com `std::process::Command` + allowlist + bloqueio de rede |
 | `agent` | `AgentRegistry` (BTreeMap de JoinHandle para join/poll) |
-| `llm` | `Llm::query()` invoca `claude -p` / `opencode` via subprocess |
-| `decision` | `Tier2LLM` integra `llm` (opt-in via `DecisionEngine::with_llm()` + flag `--llm`) |
+| `llm` | `Llm::query()` invoca 9Router local (fusion-5tier) via curl + sqlite3 |
+| `decision` | `Tier2LLM` usa 9Router + prompt JSON forçado (confiança 0.90) |
 | `bench` | `run_suite()` executa 10 tasks + baseline + speedup factor + avg_latency_us |
 | `rlm` | `Planner::execute()` retorna `ExecutionReport` com timing por subtask |
 | `shadow` | `ShadowExecutor::evaluate_case()` com 3 estratégias (exata, numérica, string) |
 
 **CLI:** `ayrola status`, `ayrola decide --llm`, `ayrola bench`, `ayrola doctor`
 
-**Gates:** ✅ 165 testes (161 lib + 4 e2e) | ✅ clippy CLEAN | ✅ build | ✅ doc | ✅ git clean
+**Gates:** ✅ 169 testes (165 lib + 4 e2e) | ✅ clippy CLEAN | ✅ build | ✅ doc | ✅ git clean
 
-**Métricas:** 41 commits | 5.361 linhas | 21 arquivos | 15 módulos | 9 ADRs
+**Métricas:** 57 commits | 5985 linhas | 21 arquivos | 15 módulos | 9 ADRs
+
+---
+
+## Phase 2: Real Sandbox + Memory (2026-10-04) — ⏳ EM PROGRESS
+
+Objetivo: tornar o kernel um agente real, não só decision engine.
+
+| Semana | Tema | Entregável |
+|---|---|---|
+| S9 | Railway VM Sandbox | `RemoteSandboxExecutor` SSH `railway.new`, 2.791s p50, sandbox `/tmp/` |
+| S10 | OpenCode Baseline | Ayrola p50 2969ms vs OpenCode 7271ms (2.4x speedup, fusion-5tier) |
+| S11 | Semantic Memory | `memory/query.rs` com busca vetorial (fastembed + Qdrant local) |
+| S12 | Observabilidade | tracing spans + structured logs + health checks |
+
+**Kill criteria:**
+- Sandbox não suporta Linux namespaces → FAIL
+- Baseline OpenCode pior que heurística → FAIL
+- Semantic search não melhora recall >80% → FAIL
+
+### Commit
+```
+docs: ROADMAP Phase 2 defined (S9-S12)
+```
 
 ### Limites honestos
 - `ShadowExecutor` compara `input == expected` — não executa código real (precisa Railway VM)

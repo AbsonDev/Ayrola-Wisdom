@@ -9,7 +9,7 @@
 | Decisão | Escolha | Por quê |
 |---|---|---|
 | **Linguagem runtime** | **Rust puro** — zero Python, zero FFI, zero LangChain | Sub-100ms spawn, ecossistema Rust |
-| **Decision layer** | **Ensemble 3 tiers** (cache → heuristic → LLM) | Tier0 hit 0ms, Tier1 filtra heuristico, Tier2 LLM stub |
+| **Decision layer** | **Ensemble 3 tiers** (cache → heuristic → LLM) | Tier0 0ms, Tier1 heuristico, Tier2 9Router local (free) |
 | **Kernel** | Tokio async + event store | Sub-100ms spawning, event-sourced memory |
 | **Auto-melhoria** | Nível 3 (harness self-modification) | Diferencial competitivo |
 | **Sandbox** | Linux namespaces (per-agent) | Zero overhead vs Docker |
@@ -31,7 +31,7 @@
 | **RESEARCH-PATTERNS.md** | 13 papers mapeados aos 4 pilares |
 | **PLANO_IMPLEMENTACAO.md** | 8 ADRs derivados de papers (nenhum testado) |
 | **PLANO_MIGRACAO.md** | ⚠️ Histórico — plano do fork, parcialmente revertido |
-| **phase0-kernel/** | Phase 1 atual (5.361 linhas, real, 165 testes) — **substituído pelo kernel novo** |
+| **phase0-kernel/** | Phase 1 atual (5642 linhas, real, 165 testes) — **substituído pelo kernel novo** |
 
 ---
 
