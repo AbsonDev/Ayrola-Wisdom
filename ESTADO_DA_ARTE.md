@@ -226,3 +226,70 @@ ort = "0.47"  # ONNX Runtime bindings
 ---
 
 *Consolidado em 2026-09-27 a partir de 22 arquivos originais.*
+---
+
+## 7. Auto-Research Setup (2026-09-28)
+
+### Ferramentas instaladas
+- **orx (OpenResearch CLI) v0.2.11** — `~/.local/bin/orx` — pesquisa automática, discover embedding/keyword, paper fetch, dashboard local
+- **alphaxiv-py v0.7.0** — `~/Library/Python/3.14/bin/alphaxiv` — SDK Python para alphaXiv API
+- **alphaXiv MCP server** — `https://api.alphaxiv.org/mcp/v1` — 19 ferramentas (discover, paper content, GitHub code, researchers, library)
+
+### Papers recuperados via orx discover embedding (6 queries × 10 = 60 resultados, 55 únicos)
+
+| arXiv | Título | Votos | Categoria |
+|---|---|---|---|
+| 2608.23552 | Prime Agent: A Self-Improving RLM Harness | 357 | recursive agent harness |
+| 2609.11873 | The Last AI Built by Humans: Toward Genuine RSI | 305 | self-improving agent |
+| 2609.14858 | Dream-RSI: Recursive Self-Improvement through Evolving Worlds | 244 | self-improving agent |
+| 2609.24972 | RRSI: Regularized Recursive Self-Improvement of Agent Harnesses | 218 | recursive + self-improving |
+| 2608.spec-ptc | Speculative Programmatic Tool Calling | 190 | recursive + subagent spawning |
+| 2609.20519 | SoL-Pi: Recursively Scaling Auto-Research Loops | 181 | recursive + self-improving |
+| 2609.15364 | RSIAgent: Autonomous Exploration for RSI | 130 | recursive + self-improving |
+| 2608.24876 | Recursive Experiential-Working Memory Evolution | 85 | recursive agent harness |
+| 2605.06639 | Recursive Agent Optimization | 81 | subagent spawning parallel |
+| 2609.08183 | NeoHorse-1: Towards RSI via Agentic Post-training | 71 | recursive + self-improving |
+| 2609.26457 | Recursive self-improvement of AI research agents | 59 | self-improving agent |
+| 2609.06396 | MetaRSI / RSI2: A Meta-Recursive Self-Improving System | 46 | self-improving agent |
+| 2609.26781 | Agensh: Scaling Organizational Intelligence to 1,024 Agents | 46 | subagent spawning parallel |
+| 2608.21690 | Context as an Environment: Programmatic Context Management | 26 | event sourcing agent memory |
+| 2607.27773 | ChronoMem: Version Control and Semantic Rollback for LLM Memory | 11 | event sourcing agent memory |
+| 2609.00595 | SoK: When Safe Agents Fail Together: Security of Multi-Agent Systems | 10 | agent sandbox isolation |
+| 2607.12406 | Isolation as a First-Class Principle for LLM-Agent System Safety | 8 | agent sandbox isolation |
+| 2609.27279 | EnSIMem: Entity-Structured Indexing for Long-Term Agent Memory | 7 | event sourcing agent memory |
+| 2608.06745 | MemPrism: Task-Conditioned Relational Memory Views | 6 | event sourcing agent memory |
+| 2605.24486 | AgentFugue: Agent Scaling for Long-Horizon Tasks | 6 | subagent spawning parallel |
+
+### Cross-cutting papers (2+ categorias) — highest signal for Ayrola
+1. **RRSI (2609.24972)** — recursive harness + self-improving → directly relevant to Pilar 4
+2. **Speculative Programmatic Tool Calling (2608.spec-ptc)** — recursive + subagent spawning → Pilar 2
+3. **SoL-Pi (2609.20519)** — recursive + self-improving → Pilar 4
+4. **RSIAgent (2609.15364)** — recursive + self-improving → Pilar 4
+5. **NeoHorse-1 (2609.08183)** — recursive + self-improving → Pilar 4
+
+### Diretório de papers
+`/Users/absondutragalvao/ayrola-research-papers/`
+
+### Comandos úteis
+```bash
+# Pesquisa semântica
+orx discover embedding "query" --limit 20 --prioritize recency
+
+# Busca por keyword
+orx discover keyword "query" --limit 20
+
+# Baixar paper completo
+orx paper <arxiv-id> --full
+
+# Baixar PDF
+alphaxiv paper pdf download <arxiv-id> ./paper.pdf
+
+# Extrair texto
+alphaxiv paper text <arxiv-id>
+
+# Papers similares
+alphaxiv paper similar <arxiv-id>
+
+# Dashboard local de autoresearch
+orx up
+```
