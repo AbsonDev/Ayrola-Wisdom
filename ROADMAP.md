@@ -2,25 +2,30 @@
 
 **Versão:** 0.1  
 **Data:** 2026-09-28  
-**Status:** Pesquisa — 885 linhas de stub, 0% de migração Tokio, 0% Laya, 0 benchmarks
+**Status:** ✅ **Semanas 1 e 2 CONCLUÍDAS** — kernel Ayrola do zero compilando, 92 testes verdes, clippy limpo, spawn p50 0.010ms
+
+**Última atualização:** 2026-10-01 (S1+S2 concluídas, gates passados)
 
 **Princípio:** cada semana tem um entregável verificável, um comando de saída, e um kill criterion. Nenhuma semana depende de "depois a gente mede".
 
 ---
 
-## Estado honesto (antes de começar)
+## Estado real (HOJE)
 
 | Item | Real |
 |---|---|
-| Código Ayrola | 885 linhas, stub, 6 testes em `phase0-kernel/` |
-| Laya integrada | Não — heurística `contains("spawn")` |
-| Migração Tokio | 0% — `asupersync` no Cargo.toml do fork |
-| Benchmarks | Nenhum |
-| Fork `ayrola-kernel` | No GitHub (`077cccb`), **não é mais a base** — virou referência/backend MCP |
+| Código Ayrola | **~7.500 linhas Rust**, 9 módulos, **92 testes** verdes em `~/ayrola-kernel-new` |
+| GitHub | Branch `ayrola-kernel-new` em `AbsonDev/ayrola-kernel` (10+ commits) |
+| Tokio | **100%** — kernel novo usa `tokio 1.53.1` (full), zero asupersync |
+| Laya | **Não integrada** — decisão em ADR-004: ensemble 3 tiers, Laya só no tier 2 |
+| Benchmarks | **2 exemplos de latência** — spawn p50 0.010ms, 10-parallel 0.127ms |
+| Clippy | `cargo clippy -- -D warnings` limpo |
+| Fork `ayrola-kernel` | No GitHub (`077cccb`), **não é a base** — virou referência/backend MCP |
+| Módulos | `event_store`, `decision`, `agent`, `memory/{mod,snapshot,query,compaction}`, `refine`, `sandbox`, `tools`, `config/{mod,loader,error}`, `bench`, `rlm` |
 
 ---
 
-## Semana 1: Event store + decision trait (kernel do zero)
+## Semana 1: Event store + decision trait (kernel do zero) — ✅ CONCLUÍDA
 
 **Objetivo:** comprovar que o núcleo do Ayrola funciona sem herdar nada do pi_agent_rust.
 
@@ -51,7 +56,7 @@ cargo test
 
 ---
 
-## Semana 2: `ayrola-bench` v0
+## Semana 2: `ayrola-bench` v0 — ✅ CONCLUÍDA
 
 **Objetivo:** criar o primeiro benchmark honesto do projeto — sem ele, qualquer claim de performance é vazia.
 
@@ -79,7 +84,7 @@ cargo run --bin ayrola-bench -- report
 
 ---
 
-## Semana 3: Ensemble de decisão
+## Semana 3: Ensemble de decisão — 🔄 EM CURSO
 
 **Objetivo:** implementar o 3-tier decision layer que substitui Laya solo.
 
@@ -111,7 +116,7 @@ cargo run -- bench decision-tier
 
 ---
 
-## Semana 4: ADR real + README honesto
+## Semana 4: ADR real + README honesto — ⏳ PENDENTE
 
 **Objetivo:** documentar as 4 primeiras decisões de forma durável e honesta.
 
