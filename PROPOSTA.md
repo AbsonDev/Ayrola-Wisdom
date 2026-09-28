@@ -84,7 +84,7 @@ Escopo, features, roadmap e métricas de sucesso do Ayrola Harness.
 
 ### 3.1 RLM Engine
 - Decomposição: LLM decide quebrar tarefa em subtarefas
-- Spawn: `tokio::spawn` com 10-50ms de latência
+- Spawn: Tokio `task::spawn` com 10-50ms de latência (não processo — 10-20x mais rápido que Prime Agent)
 - Depth-bounded: default 3, configurável
 - Agregação: resultados estruturados recombinados
 
@@ -151,7 +151,7 @@ Escopo, features, roadmap e métricas de sucesso do Ayrola Harness.
 | IDE própria | Terminal-first é o padrão. IDE é outro produto. |
 | Sandbox próprio (Docker-like completo) | Use namespaces, não reimplemente containers. |
 | 20+ modelos | Complexidade sem retorno. 3-5 modelosSuficientes. |
-| Python-first | Performance limitante. Rust resolve. |
+| Python-first / LangChain / FFI | Performance limitante + GIL mata paralelismo. Rust puro resolve. |
 | Adoção massiva precoce | Construa sólido primeiro. Cresça depois. |
 
 ---
@@ -166,11 +166,6 @@ Escopo, features, roadmap e métricas de sucesso do Ayrola Harness.
 - `serde` — serialização
 - `memmap2` — event store em memória
 - `clap` — CLI
-
-### Python (FFI)
-- `PyO3` — bindings
-- `langchain` / `llama-index` — orquestração (opcional)
-- `sentence-transformers` — embeddings para memória semântica
 
 ### Infraestrutura
 - 9Router local (fallback LLM)

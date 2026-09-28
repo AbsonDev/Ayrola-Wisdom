@@ -8,9 +8,9 @@
 
 | Decisão | Escolha | Por quê |
 |---|---|---|
-| **Linguagem runtime** | Rust (kernel) + Python (definição) | Performance + ecossistema AI |
+| **Linguagem runtime** | **Rust puro** — zero Python, zero FFI, zero LangChain | Sub-100ms spawn, ecossistema Rust |
 | **Decision layer** | Laya (ONNX local) | 4x mais rápido que Jev, open-source, fine-tunable, Rust-native |
-| **Kernel** | Tokio async + event store | Sub-100ms spawning, memória perfeita |
+| **Kernel** | Tokio async + event store | Sub-100ms spawning, event-sourced memory |
 | **Auto-melhoria** | Nível 3 (harness self-modification) | Diferencial competitivo |
 | **Sandbox** | Linux namespaces (per-agent) | Zero overhead vs Docker |
 | **Multi-modelo** | Sim, com fallback | Resiliência |
@@ -43,5 +43,7 @@
 
 **Repositório do kernel:** `~/ayrola-kernel`
 **Commit inicial:** `e87cd93` — Phase 0: Rust + Laya + Tokio (9/9 tests)
+
+**Decisões fechadas:** Rust puro (sem Python/FFI/LangChain), Tokio (não asupersync), Laya ONNX embedded
 
 *Última atualização: 2026-09-27*

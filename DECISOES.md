@@ -13,7 +13,7 @@ Tabela de decisões com trade-offs. Cada linha = uma decisão arquitectonica fec
 | **TypeScript** | Type safety, serverless, Next.js | Node.js GC, menos maduro para agents | ❌ |
 | **Go** | Goroutines simples, GC eficiente | Ecossistema AI menor | 🔄 Longo prazo (plano B) |
 
-**Decisão:** **Rust para o kernel, desde o dia 1.** Zero Python no kernel. Python só via FFI na camada de orquestração (Fase 1+).
+**Decisão:** **Rust para o kernel, desde o dia 1. Zero Python no kernel. Zero LangChain, zero LlamaIndex, zero FFI.**
 
 **Por que Rust-first (não Python-first):**
 - Sub-100ms spawning é impossível em Python (GIL + startup 500ms-2s)
@@ -22,9 +22,16 @@ Tabela de decisões com trade-offs. Cada linha = uma decisão arquitectonica fec
 - Laya ONNX integra nativamente via `ort` crate — sem HTTP, sem Python
 - GitHub Copilot provou o caminho: 800k+ linhas Rust (Q2 2026)
 
+**Por que ZERO LangChain/LlamaIndex (revertido):**
+- LangChain é heavy e opinionated; API mudou 3x nos últimos 2 anos
+- LlamaIndex é framework RAG, não kernel de agentes
+- FFI boundary = latência + complexidade de tipos + bugs de lifetime
+- **O principal:** FFI com Python reintroduz o GIL — mata a paralelo real de 10+ subagentes
+- A thesis "Rust kernel + Laya embedded" é **incompatível** com Python no caminho crítico
+
 **Evidência:** Rust é 97x mais rápido que Python (CPU), 3-4x em I/O. Tokio tasks spawnam em microssegundos.
 
-**Caminho revolucionário confirmado:** Rust kernel + Laya desde o Fase 0. Sem Python no kernel, sem HTTP para decision layer, sem dependência externa.
+**Caminho revolucionário confirmado:** Rust kernel + Laya desde o Fase 0. Sem Python no kernel, sem HTTP para decision layer, sem dependência externa, sem FFI.
 
 ---
 
@@ -37,9 +44,24 @@ Tabela de decisões com trade-offs. Cada linha = uma decisão arquitectonica fec
 | **conkernel/clikernel** | Biblioteca, plugável | Dependência externa | ✅ Referência |
 | **Tokio (propio)** | Zero custo, integrado | Precisa construir | ✅ **CHOSEN** |
 
-**Decisão:** Tokio runtime com event store embutido — estado entre turnos via eventos append-only, não via REPL.
+**Decisão:** **Tokio** runtime com event store embutido — estado entre turnos via eventos append-only, não via REPL.
 
-**Evidência:** conkernel abstraiu o conceito (2026). Tokio é maduro em Rust.
+**Alternativa avaliada: `asupersync` (runtime do `pi_agent_rust`) — DESCARTADA**
+
+O `pi_agent_rust` (agente Rust mais maduro, 16k+ arquivos) **não usa Tokio**. Ele usa `asupersync`, um async runtime customizado do próprio autor (v0.5.0, single-maintainer).
+
+| Critério | **Tokio** | **asupersync** |
+|---|---|---|
+| Maturidade | 6+ anos, padrão da indústria | Crate próprio, v0.5.0 |
+| Ecossistema | Milhares de crates compatíveis | Isolado — só o que o autor mantém |
+| Integração Laya/ONNX (`ort`) | Nativa | Requer bridge/adaptador |
+| Sandbox namespaces (`nix`) | Nativa | Requer adaptação |
+| Risco de bus factor | Bilhões de downloads | Single-maintainer |
+| Contratação de devs | Trivial | Zero no mercado |
+
+**Por que descartado:** `asupersync` resolve problemas específicos do `pi` (TUI Bubble Tea, TLS custom, reactor próprio). O Ayrola não precisa disso e perderia acesso ao ecossistema Rust. **Tokio é padrão, battle-tested e integra nativamente com todas as crates que o Ayrola precisa.**
+
+**Evidência:** conkernel abstraiu o conceito de kernel persistente (2026). Tokio é maduro em Rust. `asupersync` provou que um runtime custom é viável mas não necessário.
 
 ---
 
@@ -163,8 +185,8 @@ ort = "0.47"  # ONNX Runtime bindings
 
 | # | Decisão | Escolha |
 |---|---|---|
-| 1 | Linguagem runtime | Rust (kernel) + Python (definição) |
-| 2 | Kernel persistente | Tokio (próprio) |
+| 1 | Linguagem runtime | **Rust puro** — zero Python, zero FFI, zero LangChain |
+| 2 | Kernel persistente | **Tokio** (não asupersync, não próprio) |
 | 3 | RLM | Nativo (depth-bounded) |
 | 4 | Auto-melhoria | Nível 3 |
 | 5 | Decision layer | Laya (ONNX local) |

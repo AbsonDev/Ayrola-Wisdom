@@ -52,7 +52,7 @@ Agente reescreve o próprio código do harness. Nível 3 de auto-melhoria. 45 ci
 
 | Runtime | Linguagem | Destaque |
 |---|---|---|
-| **pi_agent_rust** | Rust | Agente em Rust, prova de conceito |
+| **pi_agent_rust** | Rust | **Agente Rust mais maduro existente** (16k+ arquivos, 892KB agent.rs, tools/providers/LSP/browser/MCP/subagents/extensions/swarm/compaction/session-store). Runtime: `asupersync` (custom, single-maintainer) — NÃO Tokio. |
 | **conkernel / clikernel** | Rust | Kernel persistente como biblioteca plugável (AnswerDotAI) |
 | **Mastra** | TypeScript | Framework de agentes TS-first |
 | **GitHub Copilot** | Rust | Migrou 800k+ linhas para Rust (Q2 2026) |
@@ -180,6 +180,10 @@ ort = "0.47"  # ONNX Runtime bindings
 ### Gap 6: Laya-style Decisions sem Dependência Externa
 **Problema:** Jev depende de TypeSafe/9Router.
 **Oportunidade:** Laya roda 100% local, $0, sem API.
+
+### Gap 7: Runtime Padrão (Tokio) vs Runtime Custom (asupersync)
+**Problema:** `pi_agent_rust` prova que Rust viabiliza agentes completos, mas usa `asupersync` (runtime custom, single-maintainer). Isso cria risco de bus factor e isolamento do ecossistema.
+**Oportunidade:** Ayrola usa Tokio (padrão da indústria) + patterns do `pi_agent_rust` reimplementados. Melhor dos dois mundos: base sólida + ecossistema maduro.
 
 ---
 

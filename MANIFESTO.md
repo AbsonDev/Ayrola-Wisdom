@@ -11,7 +11,9 @@ Os agentes de hoje (Prime Agent, OpenCode, Claude Code, DeepSeek Harness) são *
 
 Eles executam comandos, chamam LLMs, escrevem código. Mas quando a sessão termina, **tudo morre**. Memória some. Contexto some. O agente esquece o que aprendeu.
 
-É como ter um funcionário genial que sofre de amnesia todos os dias.
+O melhor de hoje (`pi_agent_rust`) tem 16k+ arquivos, tools, providers, browser, LSP — mas ainda é memória volátil. Evento não é imutável. Decisão não é replayável.
+
+Ayrola muda o jogo: memória event-sourced, time-travel, sub-100ms spawn, sandbox-per-agent, Laya decision layer — tudo em Rust puro.
 
 ---
 
@@ -56,7 +58,9 @@ Tarefa complexa
 
 **Impacto:** RLM de verdade. Agente pensa em paralelo, não sequencialmente.
 
-**Implementação:** Tokio async runtime, Tokio tasks (não processos), cancellation tokens.
+**Implementação:** Tokio async runtime (`rt-multi-thread`), Tokio tasks (não processos), cancellation tokens.
+
+**Referência:** `pi_agent_rust` prova o padrão de tools/providers/subagents em Rust. Ayrola usa Tokio (padrão da indústria) + os patterns de agente do `pi`, sem herdar seu runtime custom (`asupersync`).
 
 ### Pilar 3: Auto-Melhoria Nível 3 (Harness Self-Modification)
 
@@ -118,9 +122,8 @@ Cada subagente em seu próprio **namespace Linux leve**, criado em microssegundo
 │                                                              │
 │  ▲                              ▲                            │
 │  │                              │                            │
-│  Python FFI                    TypeScript                     │
-│  (orquestração,                 (dashboard,                    │
-│   planejamento)                  time-travel debugger)         │
+│  Toolchain (MCP, LSP,           Dashboard                     │
+│  providers, tools)               (time-travel debugger)        │
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -130,7 +133,7 @@ Cada subagente em seu próprio **namespace Linux leve**, criado em microssegundo
 
 | Diferencial | Estado da Arte (2026) | Ayrola |
 |---|---|---|
-| Sub-100ms spawning | 500ms-2s (Python) | **10-50ms (Rust/Tokio)** |
+| Sub-100ms spawning | ~100ms (pi_agent_rust/asupersync) | **10-50ms (Rust/Tokio)** |
 | Event-sourced memory | Best-effort snippets | **Append-only, time-travel** |
 | Self-modification (nível 3) | Pesquisa | **Produção com validação** |
 | Sandbox-per-agent | Docker (50-100ms) | **Namespaces (1-10ms)** |
