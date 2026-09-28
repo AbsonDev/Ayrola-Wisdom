@@ -39,6 +39,7 @@ Guia de navegação rápida. Cada link aponta para o arquivo de detalhe.
 | Runtime diversificação | 03-trends/01-tendencias-2026.md#runtime |
 | Auto-melhoria estrutural | 03-trends/01-tendencias-2026.md#auto-melhoria |
 | Multi-agent como default | 03-trends/01-tendencias-2026.md#multiagent |
+| **Escolha da linguagem runtime** | **03-trends/03-runtime-language-decision.md** |
 
 ---
 
@@ -67,3 +68,4 @@ Comece aqui para decidir a arquitetura:
 2. **03-trends/02-decisoes-tecnicas.md** — tabela de decisões (Python/Rust/TS, sandbox, RLM, etc.)
 3. **04-comparative/FUNCIONALIDADES.md** — gap analysis
 4. **06-drafts/00-template-proposta.md** — template para definir sua proposta
+5. **03-trends/03-runtime-language-decision.md** — decisao de linguagem com benchmarks
