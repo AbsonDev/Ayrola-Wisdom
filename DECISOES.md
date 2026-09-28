@@ -94,41 +94,36 @@ O `pi_agent_rust` (agente Rust mais maduro, 16k+ arquivos) **não usa Tokio**. E
 
 ---
 
-## 5. Decision Layer (Laya — CONFIRMADO ✅)
+## 5. Decision Layer (REAVALIADO — ensemble 3 tiers)
 
 | Opção | Prós | Contras | Status |
 |---|---|---|---|
-| **Laya (ONNX local)** | $0, 33ms, open weights, fine-tunable, Rust-native | 421M params, precisa GPU p/ peak | ✅ **CHOSEN** |
-| Jev (TypeSafe API) | $0 via 9Router, 136ms | Closed weights, dependência externa | ❌ Descartado |
-| System One local | Offline, $0 | Setup inicial | ❌ Descartado |
-| LLM para tudo | Simples | 100-200x mais caro | ❌ Descartado |
+| **Ensemble 3 tiers** (cache → pre-filter → LLM) | Cache 0ms, pre-filter ~5ms, LLM só quando necessário | Complexidade | ✅ **CHOSEN** |
+| **Laya** (ONNX local) | Open weights, ~33ms, fine-tunable | Release set/2026, **sem crate Rust oficial**, Python-only, benchmark desaconselha uso head-to-head | **Candidato tier 2** |
+| Jev (TypeSafe) | ~$0/call, local, sem Python | Closed weights (SystemOne) | Candidato tier 2 |
+| LLM para tudo | Flexível | 500ms-2s, caro, overkill | ❌ |
 
-**Decisão:** Laya — modelo de decisão open-source (Apache 2.0), 421M parameters, ~33ms por decisão, roda local via ONNX Runtime.
+**Decisão:** **Ensemble 3 tiers** — cache semântico → classificador ONNX pequeno (pre-filter) → LLM completo só quando confiança < threshold.
 
-**Justificativa:**
-- **4x mais rápido** que Jev (33ms vs 136ms)
-- **Open weights** — você possui o modelo, pode auditar e fine-tunar
-- **Rust-native** — integra via `ort` crate (ONNX Runtime bindings), sem HTTP
-- **Bate Jev 26-1 no Tetris** — benchmark público
-- **Fine-tunable** — RLCD (Reinforcement Learning from Compare-and-Verify Distillation) para decisões Ayrola-specific
-- **Zero custo absoluto** — sem dependência de API
+**Por que não Laya solo (revertido):**
+- Distribuição oficial **Python** (`pip install laya`), sem crate Rust oficial
+- `receptron/laya` no GitHub é Node/TypeScript, não Rust
+- Exportar ONNX de modelo não-autoregressivo com router quebra exportadores
+- Blog de comparação (alphamatch.ai): "Benchmark honesty — checkpoints base ficam perto de acaso sem especialização"
+- Decisão tomada com 9 dias de evidência sobre modelo de 1 dia de release
 
-**Integração Rust:**
-```toml
-[dependencies]
-ort = "0.47"  # ONNX Runtime bindings
+**Novo desenho (3 tiers):**
+```
+Tier 0: Cache semântico (similaridade > 0.95) → 0ms, 0 custo
+Tier 1: Classificador ONNX pequeno (~5ms) → descarta candidatos
+Tier 2: LLM completo (Laya, Jev, ou outro) → só quando tiers 0+1 falham
 ```
 
-**Casos de uso:**
-- Decisões de subagent spawning (RLM)
-- Validação de patches de auto-melhoria (nível 3)
-- Roteamento de requisições
-- Gating de comandos perigosos
-- Commit approval
+**Métrica:** custo/decisão reduzido com delta de acerto < 2%.
 
----
+**ADR correspondente:** ADR-004 (atualizado).
 
-## 6. Sandbox
+**Ver também:** [VEREDITO.md](VEREDITO.md) para auditoria completa.## 6. Sandbox
 
 | Opção | Prós | Contras | Status |
 |---|---|---|---|

@@ -35,13 +35,13 @@ Escopo, features, roadmap e métricas de sucesso do Ayrola Harness.
 
 **Entregável:** Kernel Rust que aceita input, consulta Laya (33ms, $0, offline), persiste eventos.
 
-**Princípio da Fase 0:** Nada de Python. Nada de HTTP para decisões. O kernel é Rust puro com Laya embarcado — a decisão不问 SaaS, pergunta Laya local.
+**Princípio da Fase 0:** Nada de Python. Nada de HTTP para decisões. O kernel é Rust puro com Laya embarcado — a decisão NÃO via SaaS, pergunta Laya local.
 
 ### Fase 1: RLM Engine (3-5 meses)
 - Decomposição recursiva de tarefas
 - Spawn de subagentes (<100ms)
 - Agregação de resultados
-- Decision layer Laya integrada (roteamento de subagentes)
+- Decision layer: ensemble cache → pre-filter → LLM (Laya candidato tier 2)
 
 **Entregável:** Agente que decompõe tarefas complexas em paralelo.
 
@@ -72,7 +72,7 @@ Escopo, features, roadmap e métricas de sucesso do Ayrola Harness.
 
 ### Fase 5: Auto-Melhoria Nível 3 (14-18 meses)
 - Patch no código Rust do próprio harness
-- Validação: Laya (segurança) + cargo check (tipo)
+- Validação: ensemble decision layer (segurança) + cargo check (tipo) + golden set (comportamento)
 - Hot-reload via `libloading`
 - Loop completo: detecta → propõe → valida → aplica
 
@@ -95,9 +95,11 @@ Escopo, features, roadmap e métricas de sucesso do Ayrola Harness.
 - Fork: cria branch de timeline
 - Time-travel: volta a qualquer ponto
 
-### 3.3 Decision Layer (Laya)
-- Perguntas tipadas: choice, score, yes/no
-- 33ms por decisão
+### 3.3 Decision Layer (Ensemble 3 tiers)
+- Tier 0: Cache semântico (0ms, 0 custo)
+- Tier 1: Classificador ONNX pequeno (~5ms, pre-filter)
+- Tier 2: LLM completo (Laya/Jev/outro) só quando necessário
+- Perguntas tipadas: choice, score, yes/no por decisão
 - Fine-tuning customizado (v2)
 - Usos: routing, safety gates, spawn decisions
 
@@ -150,7 +152,7 @@ Escopo, features, roadmap e métricas de sucesso do Ayrola Harness.
 |---|---|
 | IDE própria | Terminal-first é o padrão. IDE é outro produto. |
 | Sandbox próprio (Docker-like completo) | Use namespaces, não reimplemente containers. |
-| 20+ modelos | Complexidade sem retorno. 3-5 modelosSuficientes. |
+| 20+ modelos | Complexidade sem retorno. 3-5 modelos suficientes. |
 | Python-first / LangChain / FFI | Performance limitante + GIL mata paralelismo. Rust puro resolve. |
 | Adoção massiva precoce | Construa sólido primeiro. Cresça depois. |
 

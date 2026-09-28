@@ -13,7 +13,7 @@ Eles executam comandos, chamam LLMs, escrevem código. Mas quando a sessão term
 
 O melhor de hoje (`pi_agent_rust`) tem 16k+ arquivos, tools, providers, browser, LSP — mas ainda é memória volátil. Evento não é imutável. Decisão não é replayável.
 
-Ayrola muda o jogo: memória event-sourced, time-travel, sub-100ms spawn, sandbox-per-agent, Laya decision layer — tudo em Rust puro.
+Ayrola muda o jogo: memória event-sourced, time-travel, sub-100ms spawn, sandbox-per-agent, decision layer ensemble — tudo em Rust puro.
 
 ---
 
@@ -75,7 +75,7 @@ Detecta padrão de erro recorrente
   → Agente continua com o novo código
 ```
 
-**Implementação:** Self-Harness paper (Zhang, 2026) + hot-reload via `libloading`.
+**Implementação:** Self-Harness paper (Zhang, 2026) + ensemble decision layer (validação de comportamento, não apenas tipo) + golden set imutável + rollback automático.
 
 ### Pilar 4: Sandbox-Per-Agent (Zero Overhead Isolation)
 

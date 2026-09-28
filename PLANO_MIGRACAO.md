@@ -1,6 +1,6 @@
 # PLANO DE MIGRAÇÃO — Fork pi_agent_rust → Ayrola Kernel
 
-**Base:** `Dicklesworthstone/pi_agent_rust` (MIT, 875 arquivos .rs)
+**Base:** `Dicklesworthstone/pi_agent_rust` (MIT, 406 arquivos .rs)
 **Destino:** `AbsonDev/ayrola-kernel` (branch `main`, commit `9f0799a` — já commitado local)
 **Data:** 2026-09-28
 
@@ -11,7 +11,7 @@
 O fork foi materializado em `~/ayrola-kernel` e commitado localmente. O remote foi
 configurado, mas **o repositório ainda precisa ser criado no GitHub** (ver seção 8).
 
-- Commit local: `9f0799a` — 3.361 arquivos, 1.939.000 linhas
+- Commit local: `9f0799a` — 3.361 arquivos, 663.000 linhas
 - Kernel da Fase 0 (5 módulos, 9/9 testes) preservado em `~/ayrola-kernel-phase0-backup`
 - Runtime atual: `asupersync` v0.5.0 (precisa virar Tokio)
 

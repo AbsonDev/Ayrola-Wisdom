@@ -9,7 +9,7 @@
 | Decisão | Escolha | Por quê |
 |---|---|---|
 | **Linguagem runtime** | **Rust puro** — zero Python, zero FFI, zero LangChain | Sub-100ms spawn, ecossistema Rust |
-| **Decision layer** | Laya (ONNX local) | 4x mais rápido que Jev, open-source, fine-tunable, Rust-native |
+| **Decision layer** | TBD (stub only) | Laya precisa reavaliação — release muito recente (set/2026), nenhum crate Rust oficial |
 | **Kernel** | Tokio async + event store | Sub-100ms spawning, event-sourced memory |
 | **Auto-melhoria** | Nível 3 (harness self-modification) | Diferencial competitivo |
 | **Sandbox** | Linux namespaces (per-agent) | Zero overhead vs Docker |
@@ -36,15 +36,17 @@
 2. **Decisões técnicas:** Leia `DECISOES.md`
 3. **Contexto de mercado:** Leia `ESTADO_DA_ARTE.md`
 4. **Começar a construir:** Leia `PROPOSTA.md`
+5. **Entender os pivots:** Leia `VEREDITO.md`
 
 ---
 
-**Status:** 🚀 Fase 0 EM ANDAMENTO — kernel Rust compilando
+**Status:** 🚀 Phase 0 concluída — stub kernel (6/6 tests)
 
-**Repositório do kernel:** `~/ayrola-kernel`
-**Commit inicial:** `e87cd93` — Phase 0: Rust + Laya + Tokio (9/9 tests)
+**Kernel repo:** https://github.com/AbsonDev/ayrola-kernel
+**Commit:** `077cccb` — fork pi_agent_rust (406 .rs files, 663k lines)
 
-**Decisões fechadas:** Rust puro (sem Python/FFI/LangChain), Tokio (não asupersync), Laya ONNX embedded
+**Decisões fechadas:** Rust puro (zero Python/FFI/LangChain), Tokio (não asupersync).
+**Pendente:** Laya ONNX (stub apenas), runtime migration (asupersync→Tokio).
 
 **Novos documentos (2026-09-28):**
 - `RESEARCH-PATTERNS.md` — 13 papers mapeados aos 4 pilares com detalhes
