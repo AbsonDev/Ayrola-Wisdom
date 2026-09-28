@@ -68,4 +68,5 @@ Comece aqui para decidir a arquitetura:
 2. **03-trends/02-decisoes-tecnicas.md** — tabela de decisões (Python/Rust/TS, sandbox, RLM, etc.)
 3. **04-comparative/FUNCIONALIDADES.md** — gap analysis
 4. **06-drafts/00-template-proposta.md** — template para definir sua proposta
-5. **03-trends/03-runtime-language-decision.md** — decisao de linguagem com benchmarks
+5. **03-trends/03-runtime-language-decision.md** — decisao de linguagem (Python vs Rust vs TS vs Go)
+6. **03-trends/04-laya-vs-jev-decision-layer.md** — Laya como substituto do Jev (open-source, 4x mais rápido)
