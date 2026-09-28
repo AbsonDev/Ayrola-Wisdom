@@ -9,7 +9,7 @@ Cada claim foi **verificado contra o código** antes de aceitar ou recusar.
 
 | Claim da auditoria | Verificação | Status |
 |---|---|---|
-| Phase 0 = 4.777 linhas de código, 146 testes (não 9) | `wc -l` nos 5 arquivos .rs | ✅ CONFIRMADO |
+| Phase 0 = 5.227 linhas de código, 161 testes (não 9) | `wc -l` nos 5 arquivos .rs | ✅ CONFIRMADO |
 | `decision.rs:97` diz "Phase 0: stub" | Linha lida | ✅ CONFIRMADO |
 | Laya nunca foi integrado | `loaded` flag, heurística `contains("spawn")` | ✅ CONFIRMADO |
 | Fork = 406 .rs em src/ (não 875), 663.548 linhas em src/ (não 1.94M), 693.456 total | `find src -name "*.rs" \| wc -l` | ✅ CONFIRMADO |
@@ -176,7 +176,7 @@ Semanas 5+ a partir de dado real, não de estimativa inventada.
 
 | Item | Realidade |
 |---|---|
-| Código Ayrola escrito | 4.777 linhas, 146 testes, **stub** |
+| Código Ayrola escrito | 5.227 linhas, 161 testes, **stub** |
 | Laya integrada | Não. Heurística `contains("spawn")` |
 | Migração Tokio | 0%. `asupersync` ainda no Cargo.toml |
 | Fork no GitHub | Sim, `077cccb`, intocado |

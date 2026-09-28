@@ -2,7 +2,7 @@
 
 **Versão:** 0.1  
 **Data:** 2026-09-28  
-**Status:** ✅ **Semanas 1 e 2 CONCLUÍDAS** — kernel Ayrola do zero compilando, 146 testes verdes, clippy limpo, spawn p50 0.010ms
+**Status:** ✅ **Semanas 1 e 2 CONCLUÍDAS** — kernel Ayrola do zero compilando, 161 testes verdes, clippy limpo, spawn p50 0.010ms
 
 **Última atualização:** 2026-10-01 (S1+S2 concluídas, gates passados)
 
@@ -14,7 +14,7 @@
 
 | Item | Real |
 |---|---|
-| Código Ayrola | **~4.777 linhas Rust**, 15 módulos, **146 testes** verdes em `~/ayrola-kernel-new` |
+| Código Ayrola | **~5.227 linhas Rust**, 15 módulos, **161 testes** verdes em `~/ayrola-kernel-new` |
 | GitHub | Branch `ayrola-kernel-new` em `AbsonDev/ayrola-kernel` (10+ commits) |
 | Tokio | **100%** — kernel novo usa `tokio 1.53.1` (full), zero asupersync |
 | Laya | **Não integrada** — decisão em ADR-004: ensemble 3 tiers, Laya só no tier 2 |
@@ -183,7 +183,7 @@ git commit -m "docs: 4 ADRs + honest README"
 **Gate:**
 - Todos os casos do golden set passam → promove
 - Falha qualquer → rollback automático
-- 102 testes totais, clippy clean
+- 161 testes totais, clippy clean
 
 ## Semanas 5+ (dependem de dados reais)
 

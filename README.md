@@ -31,7 +31,7 @@
 | **RESEARCH-PATTERNS.md** | 13 papers mapeados aos 4 pilares |
 | **PLANO_IMPLEMENTACAO.md** | 8 ADRs derivados de papers (nenhum testado) |
 | **PLANO_MIGRACAO.md** | ⚠️ Histórico — plano do fork, parcialmente revertido |
-| **phase0-kernel/** | Phase 0 histórico (4.777 linhas, stub, 146 testes) — **substituído pelo kernel novo** |
+| **phase0-kernel/** | Phase 0 histórico (5.227 linhas, stub, 161 testes) — **substituído pelo kernel novo** |
 
 ---
 
