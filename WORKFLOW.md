@@ -154,7 +154,7 @@ feat: S4 — ensemble 3 tiers (cache → prefilter → LLM)
 
 ---
 
-## Semana 5: Refine loop (critic + pruner) — ⏳ PENDENTE
+## Semana 5: Shadow executor + golden set — ✅ CONCLUÍDA
 
 **Branch:** `refine-loop`  
 **Deadline:** 3 dias  

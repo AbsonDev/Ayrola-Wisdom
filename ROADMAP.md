@@ -158,6 +158,19 @@ git commit -m "docs: 4 ADRs + honest README"
 
 ---
 
+## Semana 5: Shadow executor + golden set — ✅ CONCLUÍDA
+
+**Deliverables:**
+- `shadow/mod.rs` — `GoldenCase`, `GoldenSet`, `ShadowReport`, `ShadowExecutor`
+- `ShadowResult` — pass/fail com actual/expected/error
+- `ShadowCircuitBreaker` — threshold de falhas consecutivas
+- 10 testes: golden_set, shadow_execute, rollback, circuit_breaker, serialização
+
+**Gate:**
+- Todos os casos do golden set passam → promove
+- Falha qualquer → rollback automático
+- 102 testes totais, clippy clean
+
 ## Semanas 5+ (dependem de dados reais)
 
 | Semana | Tema | Critério |
