@@ -2,7 +2,7 @@
 
 **Versão:** 0.1  
 **Data:** 2026-09-28  
-**Status:** ✅ **SEMANAS 1-8 CONCLUÍDAS + PHASE 1 COMPLETA** — 58 commits, 169 testes (161 lib + 4 e2e) verdes, clippy limpo, todos os módulos reais
+**Status:** ✅ **SEMANAS 1-8 CONCLUÍDAS + PHASE 1 COMPLETA** — 85 commits, 204 testes (193 lib + 5 mcp + 1 memory + 4 e2e + 1 recall) verdes, clippy limpo, todos os módulos reais
 
 **Última atualização:** 2026-10-02 (S1-S8 + Phase 1 concluídas, todos os stubs substituídos por implementações reais)
 
@@ -14,8 +14,8 @@
 
 | Item | Real |
 |---|---|
-| Código Ayrola | **5985 linhas Rust**, 15 módulos, **169 testes (161 lib + 4 e2e)** verdes em `~/ayrola-kernel-new` |
-| GitHub | Branch `ayrola-kernel-new` em `AbsonDev/ayrola-kernel` (58 commits) |
+| Código Ayrola | **8746 linhas Rust**, 24 módulos/arquivos, **204 testes (193 lib + 5 mcp + 1 memory + 4 e2e + 1 recall)** verdes em `~/ayrola-kernel-new` |
+| GitHub | Branch `ayrola-kernel-new` em `AbsonDev/ayrola-kernel` (85 commits) |
 | Tokio | **100%** — kernel novo usa `tokio 1.53.1` (full), zero asupersync |
 | Laya | **Não integrada** — decisão em ADR-004: ensemble 3 tiers, Laya só no tier 2 |
 | Benchmarks | **CLI `bench`** — 10 tasks, scoreboard com speedup vs baseline, avg_latency_us |
@@ -27,7 +27,7 @@
 
 ## Semanas 1-8: Kernel completo — ✅ CONCLUÍDAS
 
-**Entregável:** Kernel Rust completo com 15 módulos, 169 testes (161 lib + 4 e2e), 9 ADRs, CI GitHub Actions, CLI com 4 comandos.
+**Entregável:** Kernel Rust completo com 24 módulos/arquivos, 204 testes (193 lib + 5 mcp + 1 memory + 4 e2e + 1 recall), 11 ADRs, CI GitHub Actions, CLI com 4 comandos.
 
 Todas as semanas do ROADMAP foram executadas e validadas por `cargo test` + `cargo clippy -- -D warnings`.
 
@@ -185,7 +185,7 @@ git commit -m "docs: 4 ADRs + honest README"
 **Gate:**
 - Todos os casos do golden set passam → promove
 - Falha qualquer → rollback automático
-- 169 testes (161 lib + 4 e2e) totais, clippy clean
+- 204 testes (193 lib + 5 mcp + 1 memory + 4 e2e + 1 recall) totais, clippy clean
 
 ## Semanas 5+ (dependem de dados reais)
 
@@ -239,7 +239,7 @@ Todos os stubs foram substituídos por implementações funcionais:
 
 **Gates:** ✅ 169 testes (165 lib + 4 e2e) | ✅ clippy CLEAN | ✅ build | ✅ doc | ✅ git clean
 
-**Métricas:** 58 commits | 5985 linhas | 21 arquivos | 15 módulos | 9 ADRs
+**Métricas:** 85 commits | 8746 linhas | 24 arquivos | 24 módulos/arquivos | 11 ADRs
 
 ---
 
@@ -256,8 +256,28 @@ Objetivo: tornar o kernel um agente real, não só decision engine.
 
 **Status:** S9 ✅ | S10 ✅ | S11 ✅ | S12 ✅ — **Fase 2 completa**
 
+### Fase 3 — Execução Real
+| Semana | Tema | Entregável |
+|---|---|---|
+| S13 | Shadow LLM Real | `LlmShadowRunner` executa golden set contra 9Router, **8/8 passam** ✅ |
+| S14 | MCP Server | `ayrola-agent` JSON-RPC stdio + HTTP mode, 10 tools ✅ |
+| S15 | CodeShadowRunner | 6/6 via SSH Railway VM (2.7s p50) ✅ |
+| S16 | AutoImprovement Loop | 3 candidates, real LLM eval, 8/8 @ 63s ✅ |
+
+### Fase 4 — Autonomous
+| Semana | Tema | Entregável |
+|---|---|---|
+| S17 | Event Store Integration | `ask_certified_with_store`, chain verify, 3 tests ✅ |
+| S18 | Throughput Benchmark | tier0: 2.6M ops/s, tier1: 442K ops/s, cert: 127K ops/s ✅ |
+| S19 | MCP Tool Exposure | 8 tools → **10 tools** (decide/shadow/bench/health/read/grep/webfetch/run/remember/recall) ✅ |
+| S20 | MemoryIndex + Time-Travel | `remember`/`recall` CLI + MCP, `DecisionEngine::with_memory()`, TF-IDF cosine HashMap fix ✅ |
+| S21 | Agent State | `AgentState` holds `Arc<RwLock<DecisionEngine>>` for production time-travel ✅ |
+
+**Gap fechado:** `ShadowExecutor` antigo comparava `input == expected` (nunca executava nada).
+Agora o runner chama o 9Router de verdade e valida a resposta real contra o golden set.
+
 **Kill criteria:**
-- Sandbox não suporta Linux namespaces → FAIL
+- Sandbox não suporta Linux namespaces → FAIL (Railway VM expiry é blocker de plataforma)
 - Baseline OpenCode pior que heurística → FAIL
 - Semantic search não melhora recall >80% → FAIL
 
@@ -271,3 +291,5 @@ docs: ROADMAP Phase 2 defined (S9-S12)
 - `SandboxExecutor` usa `std::process::Command` — não Linux namespaces (macOS)
 - `Tier1PreFilter` é palavra-chave, não ONNX (`ort` crate seria o sucessor)
 - Baseline OpenCode medido: 7.271ms vs Ayrola 2.969ms p50 (2.4x)
+
+| S17 | Event Store Integration | `ask_certified_with_store`, chain verify, 3 tests ✅
