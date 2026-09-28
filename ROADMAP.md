@@ -2,7 +2,7 @@
 
 **Versão:** 0.1  
 **Data:** 2026-09-28  
-**Status:** ✅ **SEMANAS 1-8 CONCLUÍDAS + PHASE 1 COMPLETA** — 41 commits, 161 testes verdes, clippy limpo, todos os módulos reais
+**Status:** ✅ **SEMANAS 1-8 CONCLUÍDAS + PHASE 1 COMPLETA** — 41 commits, 165 testes (161 lib + 4 e2e) verdes, clippy limpo, todos os módulos reais
 
 **Última atualização:** 2026-10-02 (S1-S8 + Phase 1 concluídas, todos os stubs substituídos por implementações reais)
 
@@ -14,7 +14,7 @@
 
 | Item | Real |
 |---|---|
-| Código Ayrola | **5.361 linhas Rust**, 15 módulos, **161 testes** verdes em `~/ayrola-kernel-new` |
+| Código Ayrola | **5.361 linhas Rust**, 15 módulos, **165 testes (161 lib + 4 e2e)** verdes em `~/ayrola-kernel-new` |
 | GitHub | Branch `ayrola-kernel-new` em `AbsonDev/ayrola-kernel` (41 commits) |
 | Tokio | **100%** — kernel novo usa `tokio 1.53.1` (full), zero asupersync |
 | Laya | **Não integrada** — decisão em ADR-004: ensemble 3 tiers, Laya só no tier 2 |
@@ -27,7 +27,7 @@
 
 ## Semanas 1-8: Kernel completo — ✅ CONCLUÍDAS
 
-**Entregável:** Kernel Rust completo com 15 módulos, 161 testes, 9 ADRs, CI GitHub Actions, CLI com 4 comandos.
+**Entregável:** Kernel Rust completo com 15 módulos, 165 testes (161 lib + 4 e2e), 9 ADRs, CI GitHub Actions, CLI com 4 comandos.
 
 Todas as semanas do ROADMAP foram executadas e validadas por `cargo test` + `cargo clippy -- -D warnings`.
 
@@ -185,7 +185,7 @@ git commit -m "docs: 4 ADRs + honest README"
 **Gate:**
 - Todos os casos do golden set passam → promove
 - Falha qualquer → rollback automático
-- 161 testes totais, clippy clean
+- 165 testes (161 lib + 4 e2e) totais, clippy clean
 
 ## Semanas 5+ (dependem de dados reais)
 
@@ -237,7 +237,7 @@ Todos os stubs foram substituídos por implementações funcionais:
 
 **CLI:** `ayrola status`, `ayrola decide --llm`, `ayrola bench`, `ayrola doctor`
 
-**Gates:** ✅ 161 testes | ✅ clippy CLEAN | ✅ build | ✅ doc | ✅ git clean
+**Gates:** ✅ 165 testes (161 lib + 4 e2e) | ✅ clippy CLEAN | ✅ build | ✅ doc | ✅ git clean
 
 **Métricas:** 41 commits | 5.361 linhas | 21 arquivos | 15 módulos | 9 ADRs
 

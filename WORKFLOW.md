@@ -1,6 +1,6 @@
 # WORKFLOW — Ayrola Harness (automatizado, 8 semanas)
 
-**Status:** ✅ **CONCLUÍDO** — S1-S8 executadas, Phase 1 completa, 41 commits, 161 testes, todos os módulos reais
+**Status:** ✅ **CONCLUÍDO** — S1-S8 executadas, Phase 1 completa, 41 commits, 165 testes (161 lib + 4 e2e), todos os módulos reais
 
 **Stackholder:** o próprio agente (este). Decisões validadas por cargo test + benchmarks reais.
 
