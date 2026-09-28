@@ -1,33 +1,44 @@
 # Ayrola-Wisdom
 
-> Pesquisa estruturada sobre AI Agent Harnesses — o estado da arte, tendências emergentes e papers fundamentais para o design do **Ayrola Harness**.
-
-## Estrutura
-
-```
-00-README/           ← Este índice e guia de navegação
-01-papers/           ← Papers acadêmicos (resumos + links)
-02-repositories/     ← Repositórios mapeados (categorias, stars, inovação)
-03-trends/           ← Tendências emergentes (2025-2027)
-04-comparative/      ← Comparativos: Prime Agent vs OpenCode vs DeepSeek Harness
-05-bibliography/     ← Links e referências curadas
-06-drafts/           ← Rascunhos da proposta do Ayrola Harness
-```
-
-## Como usar este repositório
-
-1. Leia `00-README/NAVEGACAO.md` primeiro — é o índice temático.
-2. Para entender o baseline científico, leia `01-papers/` em ordem cronológica.
-3. Para ver o que já existe, consulte `02-repositories/MAPA.md`.
-4. Para inspirar a proposta do seu harness, leia `03-trends/TENDENCIAS-2026.md`.
-5. Para decisões de arquitetura, use `04-comparative/`.
-
-## Status
-
-🔍 **Fase 1 — Pesquisa:** CONCLUÍDA  
-📝 **Fase 2 — Proposta:** EM PROGRESSO  
-🛠️ **Fase 3 — Implementação:** PENDENTE
+> Pesquisa estruturada para o **Ayrola Harness** — um agente Rust-native, open-source, com memória event-sourced, subagentes sub-100ms, auto-melhoria nível 3, e decision layer Laya.
 
 ---
+
+## Decisões Fechadas
+
+| Decisão | Escolha | Por quê |
+|---|---|---|
+| **Linguagem runtime** | Rust (kernel) + Python (definição) | Performance + ecossistema AI |
+| **Decision layer** | Laya (ONNX local) | 4x mais rápido que Jev, open-source, fine-tunable, Rust-native |
+| **Kernel** | Tokio async + event store | Sub-100ms spawning, memória perfeita |
+| **Auto-melhoria** | Nível 3 (harness self-modification) | Diferencial competitivo |
+| **Sandbox** | Linux namespaces (per-agent) | Zero overhead vs Docker |
+| **Multi-modelo** | Sim, com fallback | Resiliência |
+| **Open-source** | Sim (Apache 2.0 ou MIT) | Sem lock-in |
+
+---
+
+## Estrutura do Repositório
+
+| Arquivo | O que é |
+|---|---|
+| **README.md** | Este arquivo — visão + decisões + índice |
+| **MANIFESTO.md** | Por que existimos, 4 pilares, filosofia, arquitetura |
+| **DECISOES.md** | Todas as decisões técnicas detalhadas (linguagem, Laya, runtime, etc.) |
+| **ESTADO_DA_ARTE.md** | Papers, repos, tendências, benchmarks, gap analysis |
+| **PROPOSTA.md** | O que construir, features, roadmap, métricas |
+
+---
+
+## Como usar
+
+1. **Entender o projeto:** Leia `MANIFESTO.md`
+2. **Decisões técnicas:** Leia `DECISOES.md`
+3. **Contexto de mercado:** Leia `ESTADO_DA_ARTE.md`
+4. **Começar a construir:** Leia `PROPOSTA.md`
+
+---
+
+**Status:** 🔍 Pesquisa CONCLUÍDA — 📝 Proposta PRONTA para implementação
 
 *Última atualização: 2026-09-27*
