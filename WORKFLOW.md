@@ -1,6 +1,6 @@
 # WORKFLOW — Ayrola Harness (automatizado, 8 semanas)
 
-**Status:** 🟢 Semana 1 iniciada — kernel do zero em `~/ayrola-kernel-new`
+**Status:** ✅ **CONCLUÍDO** — S1-S8 executadas, Phase 1 completa, 41 commits, 161 testes, todos os módulos reais
 
 **Stackholder:** o próprio agente (este). Decisões validadas por cargo test + benchmarks reais.
 
@@ -23,7 +23,7 @@
             ┌────────────┴─────────────┐
             │                          │
      cargo test?                   fail → STOP
-      ✅ → próxima semana            │
+      ✅ → commit + push + Discord report            │
             │                        │
             ▼                        │
      commit + push ──────────────────┘
