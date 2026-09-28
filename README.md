@@ -39,6 +39,9 @@
 
 ---
 
-**Status:** 🔍 Pesquisa CONCLUÍDA — 📝 Proposta PRONTA para implementação
+**Status:** 🚀 Fase 0 EM ANDAMENTO — kernel Rust compilando
+
+**Repositório do kernel:** `~/ayrola-kernel`
+**Commit inicial:** `e87cd93` — Phase 0: Rust + Laya + Tokio (9/9 tests)
 
 *Última atualização: 2026-09-27*
