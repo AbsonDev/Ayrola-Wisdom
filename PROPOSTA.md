@@ -35,7 +35,7 @@ Escopo, features, roadmap e métricas de sucesso do Ayrola Harness.
 
 **Entregável:** Kernel Rust que aceita input, consulta Laya (33ms, $0, offline), persiste eventos.
 
-**Princípio da Fase 0:** Nada de Python. Nada de HTTP para decisões. O kernel é Rust puro com Laya embarcado — a decisão NÃO via SaaS, pergunta Laya local.
+**Princípio da Fase 0:** Nada de Python. Nada de HTTP para decisões. O kernel é Rust puro com decision trait + ensemble. Tier 0 cache, tier 1 pre-filter ONNX, tier 2 LLM.
 
 ### Fase 1: RLM Engine (3-5 meses)
 - Decomposição recursiva de tarefas
@@ -72,11 +72,14 @@ Escopo, features, roadmap e métricas de sucesso do Ayrola Harness.
 
 ### Fase 5: Auto-Melhoria Nível 3 (14-18 meses)
 - Patch no código Rust do próprio harness
+- **Shadow executor:** toda mudança candidata roda contra golden set fixo (mesmas tasks, mesmos testes)
+- **Promoção:** só se delta > 0 em TODOS os eixos (qualidade, latência, custo, segurança)
+- **Rollback automático** se qualquer eixo regredir
 - Validação: ensemble decision layer (segurança) + cargo check (tipo) + golden set (comportamento)
 - Hot-reload via `libloading`
-- Loop completo: detecta → propõe → valida → aplica
+- Loop completo: detecta → propõe → valida → shadow test → promove → aplica
 
-**Entregável:** Agente reescreve o próprio código.
+**Entregável:** Agente reescreve o próprio código com verificação de comportamento, não apenas tipo.
 
 ---
 
@@ -153,7 +156,10 @@ Escopo, features, roadmap e métricas de sucesso do Ayrola Harness.
 | IDE própria | Terminal-first é o padrão. IDE é outro produto. |
 | Sandbox próprio (Docker-like completo) | Use namespaces, não reimplemente containers. |
 | 20+ modelos | Complexidade sem retorno. 3-5 modelos suficientes. |
-| Python-first / LangChain / FFI | Performance limitante + GIL mata paralelismo. Rust puro resolve. |
+| Python-first no kernel / FFI | GIL mata paralelismo real. Rust puro resolve. |
+| LangChain / LlamaIndex | Heavy, opinionated, API instável. Fora do kernel. |
+| Laya como decision layer solo | Release muito recente, sem crate Rust, benchmark desaconselha head-to-head. |
+| Mutar o próprio benchmark | Reward hacking por construção. Golden set é imutável. |
 | Adoção massiva precoce | Construa sólido primeiro. Cresça depois. |
 
 ---

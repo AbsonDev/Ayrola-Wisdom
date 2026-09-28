@@ -9,12 +9,12 @@ Cada claim foi **verificado contra o código** antes de aceitar ou recusar.
 
 | Claim da auditoria | Verificação | Status |
 |---|---|---|
-| Phase 0 = 782 linhas de código, 6 testes (não 9) | `wc -l` nos 5 arquivos .rs | ✅ CONFIRMADO |
+| Phase 0 = 885 linhas de código, 6 testes (não 9) | `wc -l` nos 5 arquivos .rs | ✅ CONFIRMADO |
 | `decision.rs:97` diz "Phase 0: stub" | Linha lida | ✅ CONFIRMADO |
 | Laya nunca foi integrado | `loaded` flag, heurística `contains("spawn")` | ✅ CONFIRMADO |
-| Fork = 406 .rs (não 875), 663k linhas (não 1.94M) | `find src -name "*.rs" \| wc -l` | ✅ CONFIRMADO |
-| `ort` no Cargo.toml = `0.2` (não `0.47` nem `2.0.0-rc.13`) | grep no Cargo.toml | ✅ CONFIRMADO |
-| `asupersync` = 5 ocorrências, Tokio = 1 | grep no Cargo.toml | ✅ CONFIRMADO |
+| Fork = 406 .rs em src/ (não 875), 663.548 linhas em src/ (não 1.94M), 693.456 total | `find src -name "*.rs" \| wc -l` | ✅ CONFIRMADO |
+| `ort` no Cargo.toml Phase 0 = `2.0.0-rc.13` (o fork não tem `ort` nenhum) | grep no Cargo.toml | ✅ CONFIRMADO |
+| `asupersync` = 4 ocorrências, `tokio` = 0 (0% migração) | grep no Cargo.toml | ✅ CONFIRMADO |
 | Migração para Tokio = 0% executada | `asupersync` ainda no Cargo.toml | ✅ CONFIRMADO |
 | `DECISOES.md` tinha tabela quebrada e `#3` duplicado | Leitura direta | ✅ CONFIRMADO |
 | `PROPOSTA.md:38` tinha caractere chinês `不问` | Leitura direta | ✅ CONFIRMADO |
@@ -93,7 +93,7 @@ fazer 10x menos trabalho**.
 ```
 Tier 0: Cache semântico
   └─ hit (similaridade > 0.95) → 0ms, 0 custo
-  └─ADR-005Decision cache com hash de (contexto normalizado, tier)
+  └─ ADR-005: decision cache com hash de (contexto normalizado, tier)
 
 Tier 1: Classificador pequeno (pre-filter)
   └─ 4-8 params, ONNX, ~5ms

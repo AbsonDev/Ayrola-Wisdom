@@ -11,7 +11,7 @@ Os agentes de hoje (Prime Agent, OpenCode, Claude Code, DeepSeek Harness) são *
 
 Eles executam comandos, chamam LLMs, escrevem código. Mas quando a sessão termina, **tudo morre**. Memória some. Contexto some. O agente esquece o que aprendeu.
 
-O melhor de hoje (`pi_agent_rust`) tem 16k+ arquivos, tools, providers, browser, LSP — mas ainda é memória volátil. Evento não é imutável. Decisão não é replayável.
+O melhor de hoje (`pi_agent_rust`) tem 469 arquivos .rs, tools, providers, browser, LSP — mas ainda é memória volátil. Evento não é imutável. Decisão não é replayável.
 
 Ayrola muda o jogo: memória event-sourced, time-travel, sub-100ms spawn, sandbox-per-agent, decision layer ensemble — tudo em Rust puro.
 

@@ -52,7 +52,7 @@ Agente reescreve o próprio código do harness. Nível 3 de auto-melhoria. 45 ci
 
 | Runtime | Linguagem | Destaque |
 |---|---|---|
-| **pi_agent_rust** | Rust | **Agente Rust mais maduro existente** (16k+ arquivos, 892KB agent.rs, tools/providers/LSP/browser/MCP/subagents/extensions/swarm/compaction/session-store). Runtime: `asupersync` (custom, single-maintainer) — NÃO Tokio. |
+| **pi_agent_rust** | Rust | **Agente Rust mais maduro existente** (469 .rs arquivos, 871KB agent.rs, tools/providers/LSP/browser/MCP/subagents/extensions/swarm/compaction/session-store). Runtime: `asupersync` (custom, single-maintainer) — NÃO Tokio. |
 | **conkernel / clikernel** | Rust | Kernel persistente como biblioteca plugável (AnswerDotAI) |
 | **Mastra** | TypeScript | Framework de agentes TS-first |
 | **GitHub Copilot** | Rust | Migrou 800k+ linhas para Rust (Q2 2026) |

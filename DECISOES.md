@@ -48,7 +48,7 @@ Tabela de decisões com trade-offs. Cada linha = uma decisão arquitectonica fec
 
 **Alternativa avaliada: `asupersync` (runtime do `pi_agent_rust`) — DESCARTADA**
 
-O `pi_agent_rust` (agente Rust mais maduro, 16k+ arquivos) **não usa Tokio**. Ele usa `asupersync`, um async runtime customizado do próprio autor (v0.5.0, single-maintainer).
+O `pi_agent_rust` (agente Rust mais maduro, 469 .rs arquivos) **não usa Tokio**. Ele usa `asupersync`, um async runtime customizado do próprio autor (v0.5.0, single-maintainer).
 
 | Critério | **Tokio** | **asupersync** |
 |---|---|---|
@@ -123,7 +123,11 @@ Tier 2: LLM completo (Laya, Jev, ou outro) → só quando tiers 0+1 falham
 
 **ADR correspondente:** ADR-004 (atualizado).
 
-**Ver também:** [VEREDITO.md](VEREDITO.md) para auditoria completa.## 6. Sandbox
+**Ver também:** [VEREDITO.md](VEREDITO.md) para auditoria completa.
+
+---
+
+## 6. Sandbox
 
 | Opção | Prós | Contras | Status |
 |---|---|---|---|
@@ -182,14 +186,24 @@ Tier 2: LLM completo (Laya, Jev, ou outro) → só quando tiers 0+1 falham
 |---|---|---|
 | 1 | Linguagem runtime | **Rust puro** — zero Python, zero FFI, zero LangChain |
 | 2 | Kernel persistente | **Tokio** (não asupersync, não próprio) |
-| 3 | Auto-melhoria N3 | Laya ONNX + Critic/Pruner/Proposer (RRSI) |
+| 3 | Estratégia base | **Kernel do zero**, pi_agent_rust via MCP backend |
 | 4 | Sandbox | Linux namespaces + cgroups (não Docker) |
+| 5 | Decision layer | **Ensemble 3 tiers** (cache → pre-filter ONNX → LLM) |
+| 6 | Auto-melhoria N3 | Shadow executor + golden set imutável + rollback |
 
-**Ver também:** `RESEARCH-PATTERNS.md` (papers × pilares) e `PLANO_IMPLEMENTACAO.md` (decisões concretas)
-| 3 | RLM | Nativo (depth-bounded) |
-| 4 | Auto-melhoria | Nível 3 |
-| 5 | Decision layer | Laya (ONNX local) |
-| 6 | Sandbox | Linux namespaces |
-| 7 | Multi-modelo | Sim (fallback automático) |
-| 8 | Plugins | MCP nativo |
-| 9 | Multi-canal | Terminal-first (roadmap: v2) |
+**Ver também:** `RESEARCH-PATTERNS.md` (papers × pilares) e `PLANO_IMPLEMENTACAO.md` (ADRs)
+
+---
+
+### Detalhes completos por seção
+| Sec | Tema | Decisão |
+|---|---|---|
+| §1 | Runtime | Rust puro (escolhido); Python/TypeScript/Go rejeitados |
+| §2 | Kernel | Tokio (escolhido); asupersync rejeitado; conkernel referência |
+| §3 | RLM | Recursive unit = harness completo, não só model call |
+| §4 | Auto-melhoria | Nível 3 = shadow executor, não `cargo check` sozinho |
+| §5 | Decision layer | Ensemble 3 tiers; Laya candidato tier 2 (revertido) |
+| §6 | Sandbox | Linux namespaces via `nix`; seccomp; landlock |
+| §7 | Multi-modelo | Sim, fallback automático |
+| §8 | Plugins | MCP nativo |
+| §9 | Multi-canal | Terminal-first (v1); multi-canal no v2 |

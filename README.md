@@ -1,6 +1,6 @@
 # Ayrola-Wisdom
 
-> Pesquisa estruturada para o **Ayrola Harness** — um agente Rust-native, open-source, com memória event-sourced, subagentes sub-100ms, auto-melhoria nível 3, e decision layer Laya.
+> Pesquisa estruturada para o **Ayrola Harness** — um agente Rust-native, open-source, com memória event-sourced, subagentes sub-100ms, auto-melhoria nível 3, e decision layer ensemble.
 
 ---
 
@@ -23,10 +23,15 @@
 | Arquivo | O que é |
 |---|---|
 | **README.md** | Este arquivo — visão + decisões + índice |
-| **MANIFESTO.md** | Por que existimos, 4 pilares, filosofia, arquitetura |
-| **DECISOES.md** | Todas as decisões técnicas detalhadas (linguagem, Laya, runtime, etc.) |
+| **MANIFESTO.md** | Por que existimos, 4 pilares, filosofia |
+| **DECISOES.md** | 9 decisões técnicas (runtime, base, RLM, auto-melhoria, decision, sandbox) |
 | **ESTADO_DA_ARTE.md** | Papers, repos, tendências, benchmarks, gap analysis |
 | **PROPOSTA.md** | O que construir, features, roadmap, métricas |
+| **VEREDITO.md** | **Resposta à auditoria — 3 decisões revertidas, novos eixos** |
+| **RESEARCH-PATTERNS.md** | 13 papers mapeados aos 4 pilares |
+| **PLANO_IMPLEMENTACAO.md** | 8 ADRs derivados de papers (nenhum testado) |
+| **PLANO_MIGRACAO.md** | ⚠️ Histórico — plano do fork, parcialmente revertido |
+| **phase0-kernel/** | O único código Ayrola real (885 linhas, stub, 6 testes) |
 
 ---
 
@@ -46,14 +51,15 @@
 **Commit:** `077cccb` — fork pi_agent_rust (406 .rs files, 663k lines)
 
 **Decisões fechadas:** Rust puro (zero Python/FFI/LangChain), Tokio (não asupersync).
-**Pendente:** Laya ONNX (stub apenas), runtime migration (asupersync→Tokio).
+**Pendente:** Decision layer (ensemble 3 tiers, Laya candidato), runtime migration (asupersync→Tokio no fork).
 
-**Novos documentos (2026-09-28):**
-- `RESEARCH-PATTERNS.md` — 13 papers mapeados aos 4 pilares com detalhes
-- `PLANO_IMPLEMENTACAO.md` — Mapa completo: papers → decisões de código → módulos Rust → ADRs → roadmap revisado
-- `ESTADO_DA_ARTE.md` (atualizado) — Seção 7: Auto-Research Setup com 55 papers descobertos via `orx`
+**Documentos-chave:**
+- `VEREDITO.md` — **comece por aqui.** Auditoria honesta: 3 decisões revertidas, novos eixos (ensemble, ayrola-bench, certificação), roadmap de 4 semanas
+- `RESEARCH-PATTERNS.md` — 13 papers mapeados aos 4 pilares
+- `PLANO_IMPLEMENTACAO.md` — 8 ADRs derivados de papers (nenhum testado)
+- `ESTADO_DA_ARTE.md` §7 — 55 papers descobertos via `orx`
 
-*Última atualização: 2026-09-27*
+*Última atualização: 2026-09-28*
 
 
 ## 🔗 Repositórios

@@ -245,6 +245,15 @@ gh repo create AbsonDev/ayrola-kernel --public --source=. --push   --description
 
 Depois disso, `git ls-remote origin` deve retornar o commit `9f0799a`.
 
+## ⚠️ AVISO: Este plano foi parcialmente revertido
+
+`VEREDITO.md` revertiu 3 decisões deste plano:
+1. Fork como base → kernel do zero + pi via MCP
+2. 10 semanas → 4 semanas
+3. Laya solo → ensemble 3 tiers
+
+Este arquivo permanece como histórico. O plano vigente está em `VEREDITO.md` §7.
+
 ---
 
 ## 9. Referências

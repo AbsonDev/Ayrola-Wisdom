@@ -211,7 +211,7 @@ ayrola-kernel/src/
 | ADR-001 | Tokio como runtime (não asupersync) | pi_agent_rust análise |
 | ADR-002 | Event store append-only com causal chain | ChronoMem, RAH |
 | ADR-003 | Recursive unit = harness completo, não model call | RAH (2606.13643) |
-| ADR-004 | Laya ONNX embarcado, sem HTTP | Laya vs Jev |
+| ADR-004 | Ensemble 3 tiers (cache -> pre-filter ONNX -> LLM) | Rejected Laya solo |
 | ADR-005 | Refinement com critic+pruner (não free-form) | RRSI |
 | ADR-006 | Sandbox via namespaces, não Docker | SoK Multi-Agent |
 | ADR-007 | Delegated reading como tipo de subagente | SoL-Pi |
