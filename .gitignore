@@ -1,0 +1,4 @@
+
+# Phase 0 kernel build artifacts
+phase0-kernel/target
+phase0-kernel/Cargo.lock
