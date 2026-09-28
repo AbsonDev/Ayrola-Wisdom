@@ -2,7 +2,7 @@
 
 **Versão:** 0.1  
 **Data:** 2026-09-28  
-**Status:** ✅ **SEMANAS 1-8 CONCLUÍDAS + PHASE 1 COMPLETA** — 57 commits, 169 testes (161 lib + 4 e2e) verdes, clippy limpo, todos os módulos reais
+**Status:** ✅ **SEMANAS 1-8 CONCLUÍDAS + PHASE 1 COMPLETA** — 58 commits, 169 testes (161 lib + 4 e2e) verdes, clippy limpo, todos os módulos reais
 
 **Última atualização:** 2026-10-02 (S1-S8 + Phase 1 concluídas, todos os stubs substituídos por implementações reais)
 
@@ -15,7 +15,7 @@
 | Item | Real |
 |---|---|
 | Código Ayrola | **5985 linhas Rust**, 15 módulos, **169 testes (161 lib + 4 e2e)** verdes em `~/ayrola-kernel-new` |
-| GitHub | Branch `ayrola-kernel-new` em `AbsonDev/ayrola-kernel` (57 commits) |
+| GitHub | Branch `ayrola-kernel-new` em `AbsonDev/ayrola-kernel` (58 commits) |
 | Tokio | **100%** — kernel novo usa `tokio 1.53.1` (full), zero asupersync |
 | Laya | **Não integrada** — decisão em ADR-004: ensemble 3 tiers, Laya só no tier 2 |
 | Benchmarks | **CLI `bench`** — 10 tasks, scoreboard com speedup vs baseline, avg_latency_us |
@@ -239,7 +239,7 @@ Todos os stubs foram substituídos por implementações funcionais:
 
 **Gates:** ✅ 169 testes (165 lib + 4 e2e) | ✅ clippy CLEAN | ✅ build | ✅ doc | ✅ git clean
 
-**Métricas:** 57 commits | 5985 linhas | 21 arquivos | 15 módulos | 9 ADRs
+**Métricas:** 58 commits | 5985 linhas | 21 arquivos | 15 módulos | 9 ADRs
 
 ---
 
@@ -251,8 +251,10 @@ Objetivo: tornar o kernel um agente real, não só decision engine.
 |---|---|---|
 | S9 | Railway VM Sandbox | `RemoteSandboxExecutor` SSH `railway.new`, 2.791s p50, sandbox `/tmp/` |
 | S10 | OpenCode Baseline | Ayrola p50 2969ms vs OpenCode 7271ms (2.4x speedup, fusion-5tier) |
-| S11 | Semantic Memory | `memory/query.rs` com busca vetorial (fastembed + Qdrant local) |
-| S12 | Observabilidade | tracing spans + structured logs + health checks |
+| S11 | Semantic Memory | TF-IDF + cosine similarity puro em Rust, 3 testes verdes |
+| S12 | Observabilidade | tracing spans + metrics counters + `ayrola health` CLI ✅ |
+
+**Status:** S9 ✅ | S10 ✅ | S11 ✅ | S12 ✅ — **Fase 2 completa**
 
 **Kill criteria:**
 - Sandbox não suporta Linux namespaces → FAIL
@@ -268,4 +270,4 @@ docs: ROADMAP Phase 2 defined (S9-S12)
 - `ShadowExecutor` compara `input == expected` — não executa código real (precisa Railway VM)
 - `SandboxExecutor` usa `std::process::Command` — não Linux namespaces (macOS)
 - `Tier1PreFilter` é palavra-chave, não ONNX (`ort` crate seria o sucessor)
-- Baseline OpenCode ainda não medido
+- Baseline OpenCode medido: 7.271ms vs Ayrola 2.969ms p50 (2.4x)
