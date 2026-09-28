@@ -9,7 +9,7 @@
 | Decisão | Escolha | Por quê |
 |---|---|---|
 | **Linguagem runtime** | **Rust puro** — zero Python, zero FFI, zero LangChain | Sub-100ms spawn, ecossistema Rust |
-| **Decision layer** | TBD (stub only) | Laya precisa reavaliação — release muito recente (set/2026), nenhum crate Rust oficial |
+| **Decision layer** | **Ensemble 3 tiers** (cache → heuristic → LLM) | Tier0 hit 0ms, Tier1 filtra heuristico, Tier2 LLM stub |
 | **Kernel** | Tokio async + event store | Sub-100ms spawning, event-sourced memory |
 | **Auto-melhoria** | Nível 3 (harness self-modification) | Diferencial competitivo |
 | **Sandbox** | Linux namespaces (per-agent) | Zero overhead vs Docker |
@@ -45,13 +45,13 @@
 
 ---
 
-**Status:** 🚀 Phase 0 concluída — stub kernel (6/6 tests)
+**Status:** ✅ S1-S4 concluídas — 92 testes, clippy clean, spawn p50 0.010ms
 
-**Kernel repo:** https://github.com/AbsonDev/ayrola-kernel
-**Commit:** `077cccb` — fork pi_agent_rust (406 .rs files, 663k lines)
+**Kernel repo (novo):** https://github.com/AbsonDev/ayrola-kernel (branch `ayrola-kernel-new`)
+**Commit:** `4508f52` — kernel do zero (~7.5k linhas, 9 módulos, 92 testes)
 
-**Decisões fechadas:** Rust puro (zero Python/FFI/LangChain), Tokio (não asupersync).
-**Pendente:** Decision layer (ensemble 3 tiers, Laya candidato), runtime migration (asupersync→Tokio no fork).
+**Decisões fechadas:** Rust puro, Tokio 1.53.1, ensemble 3 tiers, Laya apenas Tier 2.
+**Concluído:** Kernel + RLM + benchmarks + decision ensemble.
 
 **Documentos-chave:**
 - `VEREDITO.md` — **comece por aqui.** Auditoria honesta: 3 decisões revertidas, novos eixos (ensemble, ayrola-bench, certificação), roadmap de 4 semanas
