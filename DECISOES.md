@@ -127,6 +127,29 @@ Tier 2: LLM completo (Laya, Jev, ou outro) → só quando tiers 0+1 falham
 
 ---
 
+## 5. Decision Layer (REAVALIADO — ensemble 3 tiers)
+
+| Opção | Prós | Contras | Status |
+|---|---|---|---|
+| **Ensemble 3 tiers** (cache → pre-filter → LLM) | Cache 0ms, pre-filter ~5ms, LLM só quando necessário | Complexidade | ✅ **CHOSEN** |
+| **Laya** (ONNX local) | Open weights, ~33ms, fine-tunable | Release set/2026, **sem crate Rust oficial**, Python-only, benchmark desaconselha uso head-to-head | **Candidato tier 2** |
+| Jev (TypeSafe) | ~$0/call, local, sem Python | Closed weights (System One) | Fallback tier 2 |
+
+---
+
+## **6. Shadow Executor + Golden Set** (NOVO — Semana 5)
+
+| Opção | Prós | Contras | Status |
+|---|---|---|---|
+| **Shadow executor** (golden set + parallel validation) | Rollback automático, golden set imutável, circuit breaker | Exige VM isolada para produção | ✅ **CHOSEN** |
+| Apenas testes unitários | Simples, rápido | Não pega regressões semânticas / integração | Rejeitado |
+| Canary deploy | Real traffic | Risco em produção, lento | Rejeitado |
+
+**Rationale:** Auto-melhoria Nível 3 exige validação semântica antes de promoção. Shadow executor roda candidato e sistema atual em paralelo contra golden set imutável. Se TODOS passam → promove; qualquer falha → rollback + registra. Circuit breaker para falhas consecutivas.
+
+---
+
+## 7. Sandbox (was 6)
 ## 6. Sandbox
 
 | Opção | Prós | Contras | Status |
@@ -142,7 +165,7 @@ Tier 2: LLM completo (Laya, Jev, ou outro) → só quando tiers 0+1 falham
 
 ---
 
-## 7. Multi-Modelo
+## 8. Multi-Modelo
 
 | Opção | Prós | Contras | Status |
 |---|---|---|---|
@@ -153,7 +176,7 @@ Tier 2: LLM completo (Laya, Jev, ou outro) → só quando tiers 0+1 falham
 
 ---
 
-## 8. Plugin System
+## 9. Plugin System
 
 | Opção | Prós | Contras | Status |
 |---|---|---|---|
@@ -167,7 +190,7 @@ Tier 2: LLM completo (Laya, Jev, ou outro) → só quando tiers 0+1 falham
 
 ---
 
-## 9. Multi-Canal
+## 10. Multi-Canal
 
 | Opção | Prós | Contras | Status |
 |---|---|---|---|
