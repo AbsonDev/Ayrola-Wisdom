@@ -27,7 +27,7 @@
 
 ## Semanas 1-8: Kernel completo — ✅ CONCLUÍDAS
 
-**Entregável:** Kernel Rust completo com 24 módulos/arquivos, 204 testes (193 lib + 5 mcp + 1 memory + 4 e2e + 1 recall), 11 ADRs, CI GitHub Actions, CLI com 4 comandos.
+**Entregável:** Kernel Rust completo com 24 módulos/arquivos, 208 testes (204 lib + 5 mcp + 1 memory + 4 e2e + 1 recall), 11 ADRs, CI GitHub Actions, CLI com 4 comandos.
 
 Todas as semanas do ROADMAP foram executadas e validadas por `cargo test` + `cargo clippy -- -D warnings`.
 
@@ -185,7 +185,7 @@ git commit -m "docs: 4 ADRs + honest README"
 **Gate:**
 - Todos os casos do golden set passam → promove
 - Falha qualquer → rollback automático
-- 204 testes (193 lib + 5 mcp + 1 memory + 4 e2e + 1 recall) totais, clippy clean
+- 208 testes (204 lib + 5 mcp + 1 memory + 4 e2e + 1 recall) totais, clippy clean
 
 ## Semanas 5+ (dependem de dados reais)
 
