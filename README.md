@@ -48,7 +48,7 @@
 **Status:** ✅ S1-S21 concluídas — 208 testes, clippy clean, spawn p50 0.010ms
 
 **Kernel repo (novo):** https://github.com/AbsonDev/ayrola-kernel (branch `ayrola-kernel-new`)
-**Commit:** `894b5e9` — kernel do zero (~8.8k linhas, 24 arquivos, 208 testes, 96 commits)
+**Commit:** `894b5e9` — kernel do zero (~8.8k linhas, 24 arquivos, 208 testes, 99 commits)
 
 **Decisões fechadas:** Rust puro, Tokio 1.53.1, ensemble 3 tiers, Laya apenas Tier 2.
 **Concluído:** Kernel + RLM + benchmarks + decision ensemble + MemoryIndex TF-IDF + MCP 10 tools + Agent::decide migrado.

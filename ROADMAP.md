@@ -2,7 +2,7 @@
 
 **Versão:** 0.1  
 **Data:** 2026-09-28  
-**Status:** ✅ **SEMANAS 1-8 CONCLUÍDAS + PHASE 1 COMPLETA** — 96 commits, 208 testes (204 lib + 5 mcp + 1 memory + 4 e2e + 1 recall) verdes, clippy limpo, todos os módulos reais
+**Status:** ✅ **SEMANAS 1-8 CONCLUÍDAS + PHASE 1 COMPLETA** — 99 commits, 208 testes (204 lib + 5 mcp + 1 memory + 4 e2e + 1 recall) verdes, clippy limpo, todos os módulos reais
 
 **Última atualização:** 2026-10-02 (S1-S8 + Phase 1 concluídas, todos os stubs substituídos por implementações reais)
 
@@ -15,7 +15,7 @@
 | Item | Real |
 |---|---|
 | Código Ayrola | **8809 linhas Rust**, 24 arquivos, **208 testes (204 lib + 5 mcp + 1 memory + 4 e2e + 1 recall)** verdes em `~/ayrola-kernel-new` |
-| GitHub | Branch `ayrola-kernel-new` em `AbsonDev/ayrola-kernel` (96 commits) |
+| GitHub | Branch `ayrola-kernel-new` em `AbsonDev/ayrola-kernel` (99 commits) |
 | Tokio | **100%** — kernel novo usa `tokio 1.53.1` (full), zero asupersync |
 | Laya | **Não integrada** — decisão em ADR-004: ensemble 3 tiers, Laya só no tier 2 |
 | Benchmarks | **CLI `bench`** — 10 tasks, scoreboard com speedup vs baseline, avg_latency_us |
@@ -239,7 +239,7 @@ Todos os stubs foram substituídos por implementações funcionais:
 
 **Gates:** ✅ 169 testes (165 lib + 4 e2e) | ✅ clippy CLEAN | ✅ build | ✅ doc | ✅ git clean
 
-**Métricas:** 96 commits | 8809 linhas | 24 arquivos | 12 ADRs
+**Métricas:** 99 commits | 8809 linhas | 24 arquivos | 12 ADRs
 
 ---
 
