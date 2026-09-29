@@ -45,13 +45,13 @@
 
 ---
 
-**Status:** ✅ S1-S4 concluídas — 92 testes, clippy clean, spawn p50 0.010ms
+**Status:** ✅ S1-S21 concluídas — 208 testes, clippy clean, spawn p50 0.010ms
 
 **Kernel repo (novo):** https://github.com/AbsonDev/ayrola-kernel (branch `ayrola-kernel-new`)
-**Commit:** `4508f52` — kernel do zero (~7.5k linhas, 15 módulos, 92 testes)
+**Commit:** `894b5e9` — kernel do zero (~8.8k linhas, 24 arquivos, 208 testes, 96 commits)
 
 **Decisões fechadas:** Rust puro, Tokio 1.53.1, ensemble 3 tiers, Laya apenas Tier 2.
-**Concluído:** Kernel + RLM + benchmarks + decision ensemble.
+**Concluído:** Kernel + RLM + benchmarks + decision ensemble + MemoryIndex TF-IDF + MCP 10 tools + Agent::decide migrado.
 
 **Documentos-chave:**
 - `VEREDITO.md` — **comece por aqui.** Auditoria honesta: 3 decisões revertidas, novos eixos (ensemble, ayrola-bench, certificação), roadmap de 4 semanas
@@ -59,7 +59,7 @@
 - `PLANO_IMPLEMENTACAO.md` — 8 ADRs derivados de papers (nenhum testado)
 - `ESTADO_DA_ARTE.md` §7 — 55 papers descobertos via `orx`
 
-*Última atualização: 2026-09-28*
+*Última atualização: 2026-09-29*
 
 
 ## 🔗 Repositórios

@@ -2,7 +2,7 @@
 
 **Versão:** 0.1  
 **Data:** 2026-09-28  
-**Status:** ✅ **SEMANAS 1-8 CONCLUÍDAS + PHASE 1 COMPLETA** — 85 commits, 204 testes (193 lib + 5 mcp + 1 memory + 4 e2e + 1 recall) verdes, clippy limpo, todos os módulos reais
+**Status:** ✅ **SEMANAS 1-8 CONCLUÍDAS + PHASE 1 COMPLETA** — 96 commits, 208 testes (204 lib + 5 mcp + 1 memory + 4 e2e + 1 recall) verdes, clippy limpo, todos os módulos reais
 
 **Última atualização:** 2026-10-02 (S1-S8 + Phase 1 concluídas, todos os stubs substituídos por implementações reais)
 
@@ -14,8 +14,8 @@
 
 | Item | Real |
 |---|---|
-| Código Ayrola | **8746 linhas Rust**, 24 módulos/arquivos, **204 testes (193 lib + 5 mcp + 1 memory + 4 e2e + 1 recall)** verdes em `~/ayrola-kernel-new` |
-| GitHub | Branch `ayrola-kernel-new` em `AbsonDev/ayrola-kernel` (85 commits) |
+| Código Ayrola | **8809 linhas Rust**, 24 arquivos, **208 testes (204 lib + 5 mcp + 1 memory + 4 e2e + 1 recall)** verdes em `~/ayrola-kernel-new` |
+| GitHub | Branch `ayrola-kernel-new` em `AbsonDev/ayrola-kernel` (96 commits) |
 | Tokio | **100%** — kernel novo usa `tokio 1.53.1` (full), zero asupersync |
 | Laya | **Não integrada** — decisão em ADR-004: ensemble 3 tiers, Laya só no tier 2 |
 | Benchmarks | **CLI `bench`** — 10 tasks, scoreboard com speedup vs baseline, avg_latency_us |
@@ -239,7 +239,7 @@ Todos os stubs foram substituídos por implementações funcionais:
 
 **Gates:** ✅ 169 testes (165 lib + 4 e2e) | ✅ clippy CLEAN | ✅ build | ✅ doc | ✅ git clean
 
-**Métricas:** 85 commits | 8746 linhas | 24 arquivos | 24 módulos/arquivos | 11 ADRs
+**Métricas:** 96 commits | 8809 linhas | 24 arquivos | 12 ADRs
 
 ---
 
@@ -251,7 +251,7 @@ Objetivo: tornar o kernel um agente real, não só decision engine.
 |---|---|---|
 | S9 | Railway VM Sandbox | `RemoteSandboxExecutor` SSH `railway.new`, 2.791s p50, sandbox `/tmp/` |
 | S10 | OpenCode Baseline | Ayrola p50 2969ms vs OpenCode 7271ms (2.4x speedup, fusion-5tier) |
-| S11 | Semantic Memory | TF-IDF + cosine similarity puro em Rust, 3 testes verdes |
+| S11/S20 | Semantic Memory | TF-IDF + cosine similarity puro em Rust, 6 testes verdes (bug fix S20) |
 | S12 | Observabilidade | tracing spans + metrics counters + `ayrola health` CLI ✅ |
 
 **Status:** S9 ✅ | S10 ✅ | S11 ✅ | S12 ✅ — **Fase 2 completa**
